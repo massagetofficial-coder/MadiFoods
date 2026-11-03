@@ -1,575 +1,231 @@
 <!DOCTYPE html>
-<html lang="ru" class="scroll-smooth">
+<html lang="ru">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madi Foods — Горячие и свежие пироги в Астане</title>
-    <!-- Tailwind CSS -->
+    <title>Madi Foods - Пекарня и полуфабрикаты в Астане</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Google Fonts: Playfair Display & Inter -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,400&display=swap" rel="stylesheet">
-    <!-- FontAwesome icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
-    <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        bakery: {
-                            50: '#fffbeb',
-                            100: '#fef3c7',
-                            200: '#fde68a',
-                            500: '#d97706',
-                            600: '#b45309',
-                            700: '#92400e',
-                            800: '#78350f',
-                            900: '#451a03',
-                            accent: '#e11d48',
-                            whatsapp: '#25D366'
-                        }
-                    },
-                    fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
-                        serif: ['Playfair Display', 'serif']
-                    }
-                }
-            }
-        }
-    </script>
     <style>
-        .gradient-overlay {
-            background: linear-gradient(180deg, rgba(69, 26, 3, 0.7) 0%, rgba(69, 26, 3, 0.4) 50%, rgba(69, 26, 3, 0.85) 100%);
-        }
-        .cart-slide {
-            transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #fffbeb;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #d97706;
-            border-radius: 4px;
-        }
+        @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
+        body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-amber-50/40 text-gray-800 font-sans antialiased flex flex-col min-h-screen">
+<body class="bg-amber-50/30 text-neutral-800 antialiased min-h-screen flex flex-col justify-between">
 
-    <!-- Top Announcement Bar -->
-    <div class="bg-bakery-900 text-amber-100 text-xs md:text-sm py-2 px-4 text-center font-medium">
-        <span>🥐 Горячие домашние пироги с доставкой по Астане за 60 минут! При заказе от 10 000 ₸ — бесплатная доставка.</span>
+    <!-- Top Bar -->
+    <div class="bg-amber-900 text-amber-100 text-xs py-2 px-4 text-center font-medium">
+        🔥 Горячие домашние пироги и полуфабрикаты с доставкой по Астане за 60 минут! При заказе от 10 000 ₸ — бесплатная доставка.
     </div>
 
-    <!-- Header / Navigation -->
-    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-amber-100 shadow-sm">
+    <!-- Header / Navbar -->
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            
-            <!-- Logo -->
-            <a href="#" class="flex items-center gap-3 group">
-                <div class="w-12 h-12 bg-bakery-500 rounded-full flex items-center justify-center text-white text-2xl shadow-md group-hover:scale-105 transition-transform">
-                    <i class="fa-solid fa-wheat-awn"></i>
+            <div class="flex items-center gap-3">
+                <div class="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center text-white font-black text-xl shadow-md">
+                    MF
                 </div>
                 <div>
-                    <span class="font-serif text-2xl font-bold tracking-tight text-bakery-900 block leading-none">Madi Foods</span>
-                    <span class="text-xs text-bakery-600 font-medium tracking-wider uppercase">Пекарня & Пироги • Астана</span>
+                    <span class="text-xl font-extrabold tracking-tight text-amber-900 block leading-none">Madi Foods</span>
+                    <span class="text-xs font-semibold text-amber-700 tracking-wider uppercase">Пекарня & Полуфабрикаты • Астана</span>
                 </div>
-            </a>
+            </div>
 
-            <!-- Desktop Navigation -->
-            <nav class="hidden md:flex items-center gap-8 font-medium text-gray-700">
-                <a href="#menu" class="hover:text-bakery-600 transition-colors">Меню</a>
-                <a href="#about" class="hover:text-bakery-600 transition-colors">О нас</a>
-                <a href="#delivery" class="hover:text-bakery-600 transition-colors">Доставка и Оплата</a>
-                <a href="#contacts" class="hover:text-bakery-600 transition-colors">Контакты</a>
+            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-neutral-600">
+                <a href="#menu" class="hover:text-amber-600 transition-colors">Меню</a>
+                <a href="#about" class="hover:text-amber-600 transition-colors">О нас</a>
+                <a href="#delivery" class="hover:text-amber-600 transition-colors">Доставка и Оплата</a>
+                <a href="#contacts" class="hover:text-amber-600 transition-colors">Контакты</a>
             </nav>
 
-            <!-- Phone & Cart Button -->
-            <div class="flex items-center gap-3 sm:gap-4">
-                <a href="tel:+77074328272" class="hidden sm:flex items-center gap-2 text-sm font-semibold text-bakery-800 hover:text-bakery-600 bg-amber-100/60 px-3 py-2 rounded-xl border border-amber-200">
-                    <i class="fa-solid fa-phone text-bakery-600"></i>
-                    <span>+7 707 432 82-72</span>
+            <div class="flex items-center gap-4">
+                <a href="tel:+77074328272" class="hidden sm:flex items-center gap-2 text-amber-900 font-bold hover:text-amber-700">
+                    <i class="fa-solid fa-phone text-amber-600"></i>
+                    <span>+7 707 432-82-72</span>
                 </a>
-
-                <!-- Cart Button -->
-                <button id="openCartBtn" onclick="toggleCart(true)" class="relative bg-bakery-600 hover:bg-bakery-700 text-white px-4 py-2.5 rounded-xl font-medium shadow-md hover:shadow-lg transition-all flex items-center gap-2.5">
-                    <i class="fa-solid fa-basket-shopping text-lg"></i>
-                    <span class="hidden sm:inline">Корзина</span>
-                    <span id="cartBadge" class="bg-bakery-accent text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                <button onclick="toggleCart()" class="relative bg-amber-600 hover:bg-amber-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all transform hover:scale-105">
+                    <i class="fa-solid fa-basket-shopping"></i>
+                    <span>Корзина</span>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold border-2 border-white">0</span>
                 </button>
             </div>
         </div>
     </header>
 
-    <!-- Main Content -->
-    <main class="flex-grow">
-        
-        <!-- Hero Section -->
-        <section class="relative min-h-[550px] lg:min-h-[620px] flex items-center justify-center text-white overflow-hidden">
-            <!-- Background Image -->
-            <img src="https://images.unsplash.com/photo-1509440159596-0249088772ff?auto=format&fit=crop&q=80&w=1600" 
-                 alt="Свежие пироги Madi Foods" 
-                 class="absolute inset-0 w-full h-full object-cover"
-                 onerror="this.src='https://placehold.co/1600x900/d97706/ffffff?text=Madi+Foods+Pies'">
-            <div class="absolute inset-0 gradient-overlay"></div>
-
-            <div class="relative z-10 max-w-4xl mx-auto text-center px-4 sm:px-6 py-12">
-                <span class="inline-block bg-bakery-500/90 text-white text-xs sm:text-sm font-semibold uppercase tracking-widest px-4 py-1.5 rounded-full mb-4 backdrop-blur-sm border border-amber-300/30">
+    <!-- Hero Section -->
+    <section class="relative bg-amber-900 text-white overflow-hidden py-20 lg:py-28">
+        <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('images/01_samsa_govyadina.jpg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-amber-950 via-amber-900/90 to-transparent"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="max-w-2xl">
+                <span class="inline-block bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
                     ✨ Традиционная выпечка в Астане
                 </span>
-                <h1 class="font-serif text-3xl sm:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-amber-50">
-                    Настоящие домашние пироги с богатой начинкой
+                <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
+                    Настоящие домашние пироги и полуфабрикаты
                 </h1>
-                <p class="text-base sm:text-xl text-amber-100 max-w-2xl mx-auto mb-8 font-light leading-relaxed">
+                <p class="text-lg text-amber-100 mb-8 font-light">
                     Выпекаем с любовью каждый день! Только свежие натуральные ингредиенты, хрустящее тесто и много сочной начинки.
                 </p>
-                
-                <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-                    <a href="#menu" class="w-full sm:w-auto bg-bakery-500 hover:bg-bakery-600 text-white font-semibold px-8 py-4 rounded-xl shadow-lg hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-3 text-lg">
-                        <span>Выбрать пирог</span>
-                        <i class="fa-solid fa-arrow-right"></i>
+                <div class="flex flex-wrap gap-4">
+                    <a href="#menu" class="bg-amber-500 hover:bg-amber-600 text-amber-950 font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Выбрать продукцию &rarr;
                     </a>
-                    <a href="https://wa.me/77074328272" target="_blank" class="w-full sm:w-auto bg-bakery-whatsapp hover:bg-green-600 text-white font-semibold px-6 py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 text-lg">
-                        <i class="fa-brands fa-whatsapp text-2xl"></i>
-                        <span>Написать в WhatsApp</span>
+                    <a href="https://wa.me/77074328272" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center gap-2">
+                        <i class="fa-brands fa-whatsapp text-xl"></i> Написать в WhatsApp
                     </a>
                 </div>
             </div>
         </div>
-        </section>
+    </section>
 
-        <!-- Features Section -->
-        <section class="py-12 bg-white border-b border-amber-100">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    
-                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-amber-50/50 border border-amber-100/80">
-                        <div class="w-12 h-12 bg-amber-100 text-bakery-600 rounded-xl flex items-center justify-center text-2xl shrink-0">
-                            <i class="fa-solid fa-temperature-arrow-up"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg mb-1">Доставка горячим</h3>
-                            <p class="text-gray-600 text-sm">Привозим в термосумках прямо из печи в любой район Астаны.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-amber-50/50 border border-amber-100/80">
-                        <div class="w-12 h-12 bg-amber-100 text-bakery-600 rounded-xl flex items-center justify-center text-2xl shrink-0">
-                            <i class="fa-solid fa-leaf"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg mb-1">100% Натурально</h3>
-                            <p class="text-gray-600 text-sm">Натуральное сливочное масло, свежее мясо и отборные ягоды без ГМО.</p>
-                        </div>
-                    </div>
-
-                    <div class="flex items-start gap-4 p-4 rounded-2xl bg-amber-50/50 border border-amber-100/80">
-                        <div class="w-12 h-12 bg-amber-100 text-bakery-600 rounded-xl flex items-center justify-center text-2xl shrink-0">
-                            <i class="fa-solid fa-pie-chart"></i>
-                        </div>
-                        <div>
-                            <h3 class="font-bold text-gray-900 text-lg mb-1">Много начинки</h3>
-                            <p class="text-gray-600 text-sm">Честный вес и максимальное количество начинки в каждом пироге.</p>
-                        </div>
-                    </div>
-
-                </div>
-            </div>
-        </section>
-
-        <!-- Menu Section -->
-        <section id="menu" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bakery-900 mb-4">Наше Аппетитное Меню</h2>
-                <p class="text-gray-600">Выберите понравившиеся пироги и выпечку. Мы начнем готовить сразу после вашего заказа!</p>
-            </div>
-
-            <!-- Category Filter Tabs -->
-            <div class="flex flex-wrap justify-center gap-2 mb-10" id="categoryFilters">
-                <button onclick="filterCategory('all')" class="cat-btn active px-6 py-2.5 rounded-full font-medium text-sm transition-all bg-bakery-600 text-white shadow-md">
-                    Все пироги
-                </button>
-                <button onclick="filterCategory('sweet')" class="cat-btn px-6 py-2.5 rounded-full font-medium text-sm transition-all bg-white text-gray-700 hover:bg-amber-100 border border-amber-200">
-                    🍓 Сладкие пироги
-                </button>
-                <button onclick="filterCategory('savory')" class="cat-btn px-6 py-2.5 rounded-full font-medium text-sm transition-all bg-white text-gray-700 hover:bg-amber-100 border border-amber-200">
-                    🥩 Сытные пироги
-                </button>
-                <button onclick="filterCategory('pastry')" class="cat-btn px-6 py-2.5 rounded-full font-medium text-sm transition-all bg-white text-gray-700 hover:bg-amber-100 border border-amber-200">
-                    🥐 Порционная выпечка
-                </button>
-            </div>
-
-            <!-- Menu Grid -->
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="menuGrid">
-                <!-- Dynamic Content via JS -->
-            </div>
-        </section>
-
-        <!-- About Section -->
-        <section id="about" class="py-16 bg-amber-100/50 border-t border-b border-amber-200/60">
-            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                <div class="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-                    <div>
-                        <span class="text-bakery-600 font-semibold text-sm tracking-wider uppercase mb-2 block">О пекарне Madi Foods</span>
-                        <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bakery-900 mb-6">Печём с любовью и заботой для жителей Астаны</h2>
-                        <p class="text-gray-700 leading-relaxed mb-4">
-                            В **Madi Foods** мы верим, что хороший пирог способен объединить семью за одним столом и подарить чувство домашнего уюта.
-                        </p>
-                        <p class="text-gray-700 leading-relaxed mb-6">
-                            Мы не используем замороженное тесто или химические добавки. Каждое утро наши пекари замешивают свежее тесто и подбирают лучшие ингредиенты: сочное парное мясо, фермерский сыр и отборные ягоды.
-                        </p>
-                        
-                        <div class="grid grid-cols-2 gap-4 border-t border-amber-200/80 pt-6">
-                            <div>
-                                <div class="font-serif text-3xl font-bold text-bakery-700">1000+</div>
-                                <div class="text-sm text-gray-600">Довольных клиентов</div>
-                            </div>
-                            <div>
-                                <div class="font-serif text-3xl font-bold text-bakery-700">100%</div>
-                                <div class="text-sm text-gray-600">Гарантия свежести</div>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=800" 
-                             alt="Процесс выпечки пирогов" 
-                             class="rounded-3xl shadow-xl w-full h-[400px] object-cover"
-                             onerror="this.src='https://placehold.co/800x600/d97706/ffffff?text=Bakery+Process'">
-                        <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-xl border border-amber-100 hidden sm:block">
-                            <div class="flex items-center gap-4">
-                                <div class="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center text-white text-xl">
-                                    <i class="fa-solid fa-award"></i>
-                                </div>
-                                <div>
-                                    <div class="font-bold text-gray-900">Высокое качество</div>
-                                    <div class="text-xs text-gray-500">Лучшие рецепты столицы</div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- Delivery & Payment Section -->
-        <section id="delivery" class="py-16 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="text-center max-w-3xl mx-auto mb-12">
-                <h2 class="font-serif text-3xl sm:text-4xl font-bold text-bakery-900 mb-4">Доставка и Оплата в Астане</h2>
-                <p class="text-gray-600">Мы оперативно доставим ваш заказ прямо к двери вашего дома или офиса</p>
-            </div>
-
-            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-                <!-- Delivery Info -->
-                <div class="bg-white p-8 rounded-3xl border border-amber-100 shadow-sm">
-                    <div class="w-14 h-14 bg-amber-100 text-bakery-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-truck-fast"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Условия доставки</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-bakery-500"></i>
-                            <span>Доставка по всему городу Астана</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-bakery-500"></i>
-                            <span>Время доставки: 45 – 70 минут после оформления</span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-bakery-500"></i>
-                            <span>Бесплатная доставка при заказе от <strong>10 000 ₸</strong></span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-circle-check text-bakery-500"></i>
-                            <span>При заказе до 10 000 ₸ — доставка 1000 – 1500 ₸ (в зависимости от района)</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Payment Info -->
-                <div class="bg-white p-8 rounded-3xl border border-amber-100 shadow-sm">
-                    <div class="w-14 h-14 bg-amber-100 text-bakery-600 rounded-2xl flex items-center justify-center text-2xl mb-6">
-                        <i class="fa-solid fa-credit-card"></i>
-                    </div>
-                    <h3 class="font-serif text-2xl font-bold text-gray-900 mb-4">Способы оплаты</h3>
-                    <ul class="space-y-3 text-gray-700">
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-qrcode text-bakery-500 mt-1"></i>
-                            <div>
-                                <strong>Kaspi QR / Kaspi Red</strong>
-                                <p class="text-sm text-gray-500">Высылаем счет или QR-код прямо в WhatsApp после согласования заказа.</p>
-                            </div>
-                        </li>
-                        <li class="flex items-start gap-3">
-                            <i class="fa-solid fa-money-bill-wave text-bakery-500 mt-1"></i>
-                            <div>
-                                <strong>Наличными курьеру</strong>
-                                <p class="text-sm text-gray-500">Оплата при получении заказа (укажите в заказе, если нужна сдача).</p>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-    </main>
-
-    <!-- Shopping Cart Slide-over Modal -->
-    <div id="cartModal" class="fixed inset-0 z-50 overflow-hidden hidden">
-        <!-- Backdrop -->
-        <div onclick="toggleCart(false)" class="absolute inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
-
-        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
-            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
-                
-                <!-- Cart Header -->
-                <div class="p-6 bg-bakery-900 text-white flex items-center justify-between">
-                    <div class="flex items-center gap-3">
-                        <i class="fa-solid fa-basket-shopping text-amber-400 text-xl"></i>
-                        <h2 class="font-serif text-xl font-bold">Ваша корзина</h2>
-                    </div>
-                    <button onclick="toggleCart(false)" class="text-amber-200 hover:text-white text-2xl">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <!-- Cart Items Container -->
-                <div class="flex-1 overflow-y-auto p-6 space-y-4" id="cartItemsList">
-                    <!-- Populated dynamically -->
-                </div>
-
-                <!-- Cart Footer & Checkout Form -->
-                <div class="border-t border-amber-100 p-6 bg-amber-50/50 space-y-4">
-                    
-                    <!-- Total Price -->
-                    <div class="flex justify-between items-center text-lg font-bold text-gray-900">
-                        <span>Итого к оплате:</span>
-                        <span id="cartTotalPrice" class="text-bakery-700 text-2xl">0 ₸</span>
-                    </div>
-
-                    <!-- Checkout Modal Trigger -->
-                    <button id="proceedCheckoutBtn" onclick="openCheckoutModal()" class="w-full bg-bakery-600 hover:bg-bakery-700 text-white font-semibold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
-                        <span>Оформить заказ</span>
-                        <i class="fa-solid fa-arrow-right"></i>
-                    </button>
-                </div>
-
-            </div>
+    <!-- Menu Section -->
+    <section id="menu" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow w-full">
+        <div class="text-center max-w-xl mx-auto mb-12">
+            <h2 class="text-3xl font-extrabold text-amber-950 mb-3">Наше меню</h2>
+            <p class="text-neutral-600">Выберите любимое угощение, добавьте в корзину и оформите заказ за пару кликов.</p>
         </div>
-    </div>
 
-    <!-- Checkout Modal Details -->
-    <div id="checkoutModal" class="fixed inset-0 z-50 overflow-y-auto hidden">
-        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
-            <!-- Backdrop -->
-            <div onclick="closeCheckoutModal()" class="fixed inset-0 bg-black/60 backdrop-blur-sm transition-opacity"></div>
-
-            <div class="inline-block align-bottom bg-white rounded-3xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full relative z-10 border border-amber-100">
-                <div class="bg-bakery-900 p-6 text-white flex justify-between items-center">
-                    <h3 class="font-serif text-xl font-bold flex items-center gap-2">
-                        <i class="fa-brands fa-whatsapp text-bakery-whatsapp text-2xl"></i>
-                        <span>Детали доставки</span>
-                    </h3>
-                    <button onclick="closeCheckoutModal()" class="text-amber-200 hover:text-white text-2xl">
-                        <i class="fa-solid fa-xmark"></i>
-                    </button>
-                </div>
-
-                <form id="orderForm" onsubmit="sendOrderToWhatsApp(event)" class="p-6 space-y-4">
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Ваше Имя *</label>
-                        <input type="text" id="custName" required placeholder="Например: Арман" class="w-full px-4 py-3 border border-amber-200 rounded-xl focus:ring-2 focus:ring-bakery-500 focus:outline-none">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Номер телефона *</label>
-                        <input type="tel" id="custPhone" required placeholder="+7 (707) 000-00-00" class="w-full px-4 py-3 border border-amber-200 rounded-xl focus:ring-2 focus:ring-bakery-500 focus:outline-none">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Адрес доставки в Астане *</label>
-                        <input type="text" id="custAddress" required placeholder="Улица, дом, квартира/офис" class="w-full px-4 py-3 border border-amber-200 rounded-xl focus:ring-2 focus:ring-bakery-500 focus:outline-none">
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Способ оплаты *</label>
-                        <select id="custPayment" class="w-full px-4 py-3 border border-amber-200 rounded-xl focus:ring-2 focus:ring-bakery-500 focus:outline-none bg-white">
-                            <option value="Kaspi QR / Перевод">Kaspi QR / Kaspi Перевод</option>
-                            <option value="Наличными курьеру">Наличными курьеру</option>
-                        </select>
-                    </div>
-
-                    <div>
-                        <label class="block text-sm font-medium text-gray-700 mb-1">Комментарий к заказу (необязательно)</label>
-                        <textarea id="custNotes" rows="2" placeholder="Например: Код домофона 45, поменьше сахара" class="w-full px-4 py-3 border border-amber-200 rounded-xl focus:ring-2 focus:ring-bakery-500 focus:outline-none"></textarea>
-                    </div>
-
-                    <div class="pt-4 border-t border-amber-100">
-                        <button type="submit" class="w-full bg-bakery-whatsapp hover:bg-green-600 text-white font-bold py-4 rounded-xl shadow-lg transition-all flex items-center justify-center gap-3 text-lg">
-                            <i class="fa-brands fa-whatsapp text-2xl"></i>
-                            <span>Отправить заказ в WhatsApp</span>
-                        </button>
-                        <p class="text-xs text-center text-gray-500 mt-2">Ваш заказ будет перенаправлен в WhatsApp кондитерской Madi Foods</p>
-                    </div>
-                </form>
-            </div>
+        <!-- Category Filters -->
+        <div class="flex justify-center gap-2 sm:gap-4 mb-10 flex-wrap">
+            <button onclick="filterMenu('all')" id="btn-all" class="category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-amber-900 text-white shadow-md">Все позиции</button>
+            <button onclick="filterMenu('baked')" id="btn-baked" class="category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-amber-100 border border-amber-200">Выпечка и полуфабрикаты</button>
+            <button onclick="filterMenu('sweet')" id="btn-sweet" class="category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-amber-100 border border-amber-200">Сладости</button>
         </div>
-    </div>
+
+        <!-- Menu Grid -->
+        <div id="menuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Items rendered dynamically via JS -->
+        </div>
+    </section>
 
     <!-- Footer -->
-    <footer id="contacts" class="bg-bakery-900 text-amber-100 pt-16 pb-12">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 mb-12">
-                
-                <!-- Brand info -->
-                <div>
-                    <div class="flex items-center gap-3 mb-4">
-                        <div class="w-10 h-10 bg-bakery-500 rounded-full flex items-center justify-center text-white text-xl">
-                            <i class="fa-solid fa-wheat-awn"></i>
-                        </div>
-                        <span class="font-serif text-2xl font-bold text-white">Madi Foods</span>
-                    </div>
-                    <p class="text-amber-200/80 text-sm leading-relaxed mb-4">
-                        Свежая выпечка и горячие пироги по традиционным рецептам с доставкой на дом в Астане.
-                    </p>
-                </div>
-
-                <!-- Quick links -->
-                <div>
-                    <h4 class="font-serif text-lg font-bold text-white mb-4">Навигация</h4>
-                    <ul class="space-y-2.5 text-sm text-amber-200/80">
-                        <li><a href="#menu" class="hover:text-amber-400 transition-colors">Меню пирогов</a></li>
-                        <li><a href="#about" class="hover:text-amber-400 transition-colors">О нашей пекарне</a></li>
-                        <li><a href="#delivery" class="hover:text-amber-400 transition-colors">Доставка и Оплата</a></li>
-                    </ul>
-                </div>
-
-                <!-- Contacts -->
-                <div>
-                    <h4 class="font-serif text-lg font-bold text-white mb-4">Контакты</h4>
-                    <ul class="space-y-3 text-sm text-amber-200/80">
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-location-dot text-amber-400"></i>
-                            <span>г. Астана, ул. Бейбарыс Султана 31 </span>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-solid fa-phone text-amber-400"></i>
-                            <a href="tel:+77074328272" class="hover:text-white">+7 (707) 432-82-72</a>
-                        </li>
-                        <li class="flex items-center gap-3">
-                            <i class="fa-brands fa-whatsapp text-bakery-whatsapp text-base"></i>
-                            <a href="https://wa.me/77074328272" target="_blank" class="hover:text-white">Написать в WhatsApp</a>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Working hours -->
-                <div>
-                    <h4 class="font-serif text-lg font-bold text-white mb-4">Режим работы</h4>
-                    <p class="text-sm text-amber-200/80 mb-2">Принимаем заказы ежедневно:</p>
-                    <div class="bg-bakery-800 p-3.5 rounded-xl border border-amber-800/60 inline-block text-sm font-semibold text-amber-300">
-                        <i class="fa-regular fa-clock mr-2"></i>09:00 – 21:00
-                    </div>
-                </div>
-
+    <footer class="bg-amber-950 text-amber-200 py-12 mt-20 border-t border-amber-900">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            <div>
+                <h3 class="text-white font-bold text-lg mb-3">Madi Foods</h3>
+                <p class="text-xs text-amber-300/80">Пекарня горячих пирогов и полуфабрикатов #1 в Астане.</p>
             </div>
-
-            <div class="border-t border-amber-800/80 pt-8 text-center text-xs text-amber-300/60 flex flex-col sm:flex-row justify-between items-center gap-4">
-                <p>&copy; 2026 Madi Foods Астана. Все права защищены.</p>
-                <p>Пекарня горячих пирогов #1 в Астане</p>
+            <div id="contacts">
+                <h3 class="text-white font-bold text-lg mb-3">Контакты</h3>
+                <p class="text-xs text-amber-300/80 mb-1"><i class="fa-solid fa-phone mr-2"></i> +7 707 432-82-72</p>
+                <p class="text-xs text-amber-300/80"><i class="fa-solid fa-location-dot mr-2"></i> г. Астана</p>
             </div>
+            <div id="delivery">
+                <h3 class="text-white font-bold text-lg mb-3">Режим работы</h3>
+                <p class="text-xs text-amber-300/80 mb-1"><i class="fa-regular fa-clock mr-2"></i>09:00 - 21:00</p>
+            </div>
+        </div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-amber-900/60 pt-8 text-center text-xs text-amber-300/60 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Madi Foods Астана. Все права защищены.</p>
+            <p>Пекарня горячих пирогов #1 в Астане</p>
         </div>
     </footer>
 
+    <!-- Cart Drawer Modal -->
+    <div id="cartModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex justify-end">
+        <div class="bg-white w-full max-w-md h-full shadow-2xl flex flex-col justify-between p-6 overflow-y-auto">
+            <div>
+                <div class="flex items-center justify-between pb-4 border-b border-neutral-200">
+                    <h3 class="text-xl font-bold text-neutral-900">Ваша корзина</h3>
+                    <button onclick="toggleCart()" class="text-neutral-400 hover:text-neutral-600 text-xl font-bold">&times;</button>
+                </div>
+                <div id="cartItems" class="divide-y divide-neutral-100 my-4">
+                    <!-- Cart Items -->
+                </div>
+            </div>
+            <div class="border-t border-neutral-200 pt-4">
+                <div class="flex justify-between text-lg font-bold text-neutral-900 mb-4">
+                    <span>Итого:</span>
+                    <span id="cartTotal">0 ₸</span>
+                </div>
+                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                    <i class="fa-brands fa-whatsapp text-xl"></i> Заказать в WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
     <!-- JavaScript Data and Functions -->
     <script>
-    // Menu Items Database
-    const menuItems = [
-      {
-        id: 1,
-        name: "Самса с говядиной",
-        category: "baked",
-        price: 350,
-        weight: "1 шт.",
-        desc: "Сочная начинка из отборной говядины с луком и ароматными специями в слоёном золотистом тесте.",
-        image: "images/01_samsa_govyadina.jpg"
-      },
-      {
-        id: 2,
-        name: "Самса с курицей",
-        category: "baked",
-        price: 300,
-        weight: "1 шт.",
-        desc: "Нежное куриное филе с пряными специями и зеленью в хрустящей слоёной корочке.",
-        image: "images/02_samsa_kuritsa.jpg"
-      },
-      {
-        id: 3,
-        name: "Чебурек мини",
-        category: "baked",
-        price: 350,
-        weight: "1 шт.",
-        desc: "Аппетитные мини-чебуреки с сочным мясным фаршем в тонком хрустящем тесте.",
-        image: "images/03_cheburek_mini-1.jpg"
-      },
-      {
-        id: 4,
-        name: "Баурсаки",
-        category: "baked",
-        price: 1900,
-        weight: "1 кг",
-        desc: "Традиционные пышные, воздушные и румяные баурсаки, приготовленные по классическому домашнему рецепту.",
-        image: "images/04_baursaki.jpg"
-      },
-      {
-        id: 5,
-        name: "Шелпек",
-        category: "baked",
-        price: 350,
-        weight: "1 шт.",
-        desc: "Тонкие, нежные и аппетитные традиционные лепёшки, обжаренные до золотистой корочки.",
-        image: "images/05_shelpek.jpg"
-      },
-      {
-        id: 6,
-        name: "Чак-чак",
-        category: "sweet",
-        price: 5000,
-        weight: "1 кг",
-        desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма — идеальное лакомство к чаю.",
-        image: "images/06_chak_chak-1.jpg"
-      },
-      {
-        id: 7,
-        name: "Булочки",
-        category: "sweet",
-        price: 120,
-        weight: "1 шт.",
-        desc: "Мягкая, ароматная и пышная сдобная выпечка с аппетитной посыпкой.",
-        image: "images/07_bulochki.jpg"
-      },
-      {
-        id: 8,
-        name: "Буйреки",
-        category: "baked",
-        price: 5000,
-        weight: "1 кг",
-        desc: "Традиционные сочные пирожки с фигурным краешком и богатой мясной начинкой.",
-        image: "images/08_buyreki.jpg"
-      }
-    ];
-        
+        // Menu Items Database (8 curated products)
+        const menuItems = [
+            {
+                id: 1,
+                name: "Самса с говядиной",
+                category: "baked",
+                price: 350,
+                weight: "1 шт.",
+                desc: "Сочная начинка из отборной говядины с луком и ароматными специями в слоёном золотистом тесте.",
+                image: "images/01_samsa_govyadina.jpg"
+            },
+            {
+                id: 2,
+                name: "Самса с курицей",
+                category: "baked",
+                price: 300,
+                weight: "1 шт.",
+                desc: "Нежное куриное филе с пряными специями и зеленью в хрустящей слоёной корочке.",
+                image: "images/02_samsa_kuritsa.jpg"
+            },
+            {
+                id: 3,
+                name: "Чебурек мини",
+                category: "baked",
+                price: 350,
+                weight: "1 шт.",
+                desc: "Аппетитные мини-чебуреки с сочным мясным фаршем в тонком хрустящем тесте.",
+                image: "images/03_cheburek_mini-1.jpg"
+            },
+            {
+                id: 4,
+                name: "Баурсаки",
+                category: "baked",
+                price: 1900,
+                weight: "1 кг",
+                desc: "Традиционные пышные, воздушные и румяные баурсаки, приготовленные по классическому домашнему рецепту.",
+                image: "images/04_baursaki.jpg"
+            },
+            {
+                id: 5,
+                name: "Шелпек",
+                category: "baked",
+                price: 350,
+                weight: "1 шт.",
+                desc: "Тонкие, нежные и аппетитные традиционные лепёшки, обжаренные до золотистой корочки.",
+                image: "images/05_shelpek.jpg"
+            },
+            {
+                id: 6,
+                name: "Чак-чак",
+                category: "sweet",
+                price: 5000,
+                weight: "1 кг",
+                desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма — идеальное лакомство к чаю.",
+                image: "images/06_chak_chak-1.jpg"
+            },
+            {
+                id: 7,
+                name: "Булочки",
+                category: "sweet",
+                price: 120,
+                weight: "1 шт.",
+                desc: "Мягкая, ароматная и пышная сдобная выпечка с аппетитной посыпкой.",
+                image: "images/07_bulochki.jpg"
+            },
+            {
+                id: 8,
+                name: "Буйреки",
+                category: "baked",
+                price: 5000,
+                weight: "1 кг",
+                desc: "Традиционные сочные пирожки с фигурным краешком и богатой мясной начинкой.",
+                image: "images/08_buyreki.jpg"
+            }
+        ];
 
-        // Shopping Cart State
         let cart = [];
 
-        // Render Menu Items
         function renderMenu(category = 'all') {
             const container = document.getElementById('menuGrid');
             container.innerHTML = '';
@@ -580,27 +236,25 @@
 
             filteredItems.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-3xl overflow-hidden border border-amber-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col group";
+                card.className = "bg-white rounded-3xl overflow-hidden border border-amber-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between";
                 card.innerHTML = `
                     <div class="relative overflow-hidden h-52">
                         <img src="${item.image}" alt="${item.name}" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                              onerror="this.src='https://placehold.co/600x400/d97706/ffffff?text=${encodeURIComponent(item.name)}'">
-                        <div class="absolute top-3 right-3 bg-white/90 backdrop-blur-md px-3 py-1 rounded-full text-xs font-bold text-bakery-800 shadow-sm">
+                        <span class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-amber-900 text-xs font-bold px-3 py-1 rounded-full shadow-md">
                             ${item.weight}
-                        </div>
+                        </span>
                     </div>
-                    <div class="p-6 flex flex-col flex-grow">
-                        <h3 class="font-serif font-bold text-xl text-gray-900 mb-2">${item.name}</h3>
-                        <p class="text-gray-600 text-sm mb-4 flex-grow leading-relaxed">${item.desc}</p>
-                        <div class="flex items-center justify-between pt-4 border-t border-amber-100">
-                            <div>
-                                <span class="text-xs text-gray-500 block">Цена</span>
-                                <span class="font-bold text-2xl text-bakery-700">${item.price.toLocaleString()} ₸</span>
-                            </div>
-                            <button onclick="addToCart(${item.id})" class="bg-amber-100 hover:bg-bakery-500 hover:text-white text-bakery-800 font-semibold px-4 py-2.5 rounded-xl transition-colors flex items-center gap-2">
-                                <i class="fa-solid fa-plus"></i>
-                                <span>В корзину</span>
+                    <div class="p-6 flex flex-col flex-grow justify-between">
+                        <div>
+                            <h3 class="text-lg font-bold text-neutral-900 mb-1">${item.name}</h3>
+                            <p class="text-xs text-neutral-500 mb-4 line-clamp-2">${item.desc}</p>
+                        </div>
+                        <div class="flex items-center justify-between pt-4 border-t border-neutral-100 mt-2">
+                            <span class="text-lg font-extrabold text-amber-900">${item.price.toLocaleString()} ₸</span>
+                            <button onclick="addToCart(${item.id})" class="bg-amber-100 hover:bg-amber-600 text-amber-950 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5">
+                                <i class="fa-solid fa-plus"></i> В корзину
                             </button>
                         </div>
                     </div>
@@ -609,182 +263,86 @@
             });
         }
 
-        // Category Filter Function
-        function filterCategory(category) {
-            // Update button styles
-            const buttons = document.querySelectorAll('#categoryFilters button');
-            buttons.forEach(btn => {
-                btn.classList.remove('bg-bakery-600', 'text-white', 'shadow-md');
-                btn.classList.add('bg-white', 'text-gray-700', 'hover:bg-amber-100', 'border', 'border-amber-200');
+        function filterMenu(category) {
+            document.querySelectorAll('.category-btn').forEach(btn => {
+                btn.className = "category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-amber-100 border border-amber-200";
             });
-            event.target.classList.remove('bg-white', 'text-gray-700', 'hover:bg-amber-100');
-            event.target.classList.add('bg-bakery-600', 'text-white', 'shadow-md');
-
+            document.getElementById(`btn-${category}`).className = "category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-amber-900 text-white shadow-md";
             renderMenu(category);
         }
 
-        // Add to Cart
         function addToCart(id) {
-            const item = menuItems.find(p => p.id === id);
-            const existing = cart.find(c => c.id === id);
-
+            const item = menuItems.find(i => i.id === id);
+            const existing = cart.find(i => i.id === id);
             if (existing) {
                 existing.quantity += 1;
             } else {
                 cart.push({ ...item, quantity: 1 });
             }
-
-            updateCartUI();
-            toggleCart(true);
-        }
-
-        // Change Item Quantity
-        function updateQuantity(id, delta) {
-            const item = cart.find(c => c.id === id);
-            if (item) {
-                item.quantity += delta;
-                if (item.quantity <= 0) {
-                    cart = cart.filter(c => c.id !== id);
-                }
-            }
             updateCartUI();
         }
 
-        // Remove Item
-        function removeFromCart(id) {
-            cart = cart.filter(c => c.id !== id);
-            updateCartUI();
-        }
-
-        // Update Cart UI Component
         function updateCartUI() {
-            const listContainer = document.getElementById('cartItemsList');
-            const totalBadge = document.getElementById('cartBadge');
-            const totalPriceEl = document.getElementById('cartTotalPrice');
-            const checkoutBtn = document.getElementById('proceedCheckoutBtn');
-
-            // Update Badge Count
+            const countElem = document.getElementById('cartCount');
             const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            totalBadge.innerText = totalCount;
+            countElem.innerText = totalCount;
 
-            // Calculate Total Price
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-            totalPriceEl.innerText = `${totalPrice.toLocaleString()} ₸`;
+            const container = document.getElementById('cartItems');
+            container.innerHTML = '';
 
             if (cart.length === 0) {
-                listContainer.innerHTML = `
-                    <div class="text-center py-12 text-gray-400">
-                        <i class="fa-solid fa-basket-shopping text-5xl mb-4 text-amber-200"></i>
-                        <p class="text-lg font-medium text-gray-600">Ваша корзина пуста</p>
-                        <p class="text-sm">Выберите вкусные пироги из меню!</p>
+                container.innerHTML = '<p class="text-neutral-400 text-center py-8 text-sm">Корзина пуста</p>';
+                document.getElementById('cartTotal').innerText = '0 ₸';
+                return;
+            }
+
+            let total = 0;
+            cart.forEach(item => {
+                total += item.price * item.quantity;
+                const row = document.createElement('div');
+                row.className = "py-3 flex items-center justify-between";
+                row.innerHTML = `
+                    <div>
+                        <h4 class="text-sm font-bold text-neutral-800">${item.name}</h4>
+                        <span class="text-xs text-neutral-500">${item.price.toLocaleString()} ₸ x ${item.quantity}</span>
+                    </div>
+                    <div class="flex items-center gap-3">
+                        <span class="text-sm font-bold text-amber-900">${(item.price * item.quantity).toLocaleString()} ₸</span>
+                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-xs px-2 py-1"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
-                checkoutBtn.disabled = true;
-                checkoutBtn.classList.add('opacity-50', 'cursor-not-allowed');
-                return;
-            }
-
-            checkoutBtn.disabled = false;
-            checkoutBtn.classList.remove('opacity-50', 'cursor-not-allowed');
-
-            listContainer.innerHTML = cart.map(item => `
-                <div class="flex items-center justify-between p-3 bg-amber-50/60 rounded-2xl border border-amber-100">
-                    <div class="flex items-center gap-3">
-                        <img src="${item.image}" alt="${item.name}" class="w-14 h-14 object-cover rounded-xl shrink-0">
-                        <div>
-                            <h4 class="font-bold text-gray-800 text-sm leading-tight">${item.name}</h4>
-                            <span class="text-xs text-bakery-600 font-semibold">${item.price.toLocaleString()} ₸</span>
-                        </div>
-                    </div>
-                    <div class="flex items-center gap-2">
-                        <div class="flex items-center bg-white border border-amber-200 rounded-lg">
-                            <button onclick="updateQuantity(${item.id}, -1)" class="w-7 h-7 flex items-center justify-center text-gray-600 hover:bg-amber-100 rounded-l-lg font-bold">-</button>
-                            <span class="w-7 text-center font-bold text-sm text-gray-800">${item.quantity}</span>
-                            <button onclick="updateQuantity(${item.id}, 1)" class="w-7 h-7 flex items-center justify-center text-gray-600 hover:bg-amber-100 rounded-r-lg font-bold">+</button>
-                        </div>
-                        <button onclick="removeFromCart(${item.id})" class="text-gray-400 hover:text-red-500 p-1">
-                            <i class="fa-solid fa-trash-can text-sm"></i>
-                        </button>
-                    </div>
-                </div>
-            `).join('');
-        }
-
-        // Toggle Cart Sidebar
-        function toggleCart(open) {
-            const modal = document.getElementById('cartModal');
-            if (open) {
-                modal.classList.remove('hidden');
-            } else {
-                modal.classList.add('hidden');
-            }
-        }
-
-        // Open Checkout Modal
-        function openCheckoutModal() {
-            if (cart.length === 0) return;
-            toggleCart(false);
-            document.getElementById('checkoutModal').classList.remove('hidden');
-        }
-
-        // Close Checkout Modal
-        function closeCheckoutModal() {
-            document.getElementById('checkoutModal').classList.add('hidden');
-        }
-
-        // Send Form Order to WhatsApp (+77074328272)
-        function sendOrderToWhatsApp(e) {
-            e.preventDefault();
-
-            const name = document.getElementById('custName').value.trim();
-            const phone = document.getElementById('custPhone').value.trim();
-            const address = document.getElementById('custAddress').value.trim();
-            const payment = document.getElementById('custPayment').value;
-            const notes = document.getElementById('custNotes').value.trim();
-
-            if (!name || !phone || !address) {
-                alert('Пожалуйста, заполните обязательные поля.');
-                return;
-            }
-
-            const totalPrice = cart.reduce((sum, item) => sum + (item.price * item.quantity), 0);
-
-            // Format WhatsApp Message
-            let message = `🥧 *НОВЫЙ ЗАКАЗ — Madi Foods (Астана)* 🥧\n\n`;
-            message += `👤 *Имя:* ${name}\n`;
-            message += `📞 *Телефон:* ${phone}\n`;
-            message += `📍 *Адрес:* ${address}\n`;
-            message += `💳 *Оплата:* ${payment}\n`;
-            if (notes) {
-                message += `📝 *Комментарий:* ${notes}\n`;
-            }
-            message += `\n🛒 *Состав заказа:*\n`;
-
-            cart.forEach((item, index) => {
-                message += `${index + 1}. ${item.name} (${item.quantity} шт) — ${(item.price * item.quantity).toLocaleString()} ₸\n`;
+                container.appendChild(row);
             });
-
-            message += `\n💰 *ИТОГО К ОПЛАТЕ:* ${totalPrice.toLocaleString()} ₸`;
-
-            // Encode for URL
-            const whatsappNum = "77074328272";
-            const encodedText = encodeURIComponent(message);
-            const waUrl = `https://wa.me/${whatsappNum}?text=${encodedText}`;
-
-            // Open WhatsApp link
-            window.open(waUrl, '_blank');
-
-            // Reset Cart and Modals
-            cart = [];
-            updateCartUI();
-            closeCheckoutModal();
+            document.getElementById('cartTotal').innerText = total.toLocaleString() + ' ₸';
         }
 
-        // Initialize App on Page Load
-        window.onload = function() {
-            renderMenu('all');
+        function removeFromCart(id) {
+            cart = cart.filter(item => item.id !== id);
             updateCartUI();
-        };
+        }
+
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+        }
+
+        function checkoutWhatsApp() {
+            if (cart.length === 0) {
+                alert('Корзина пуста!');
+                return;
+            }
+            let message = "Здравствуйте! Хочу сделать заказ в Madi Foods:%0A";
+            let total = 0;
+            cart.forEach(item => {
+                message += `- ${item.name} (${item.weight}) x ${item.quantity} = ${(item.price * item.quantity).toLocaleString()} ₸%0A`;
+                total += item.price * item.quantity;
+            });
+            message += `%0A*Итого к оплате: ${total.toLocaleString()} ₸*`;
+            window.open(`https://wa.me/77074328272?text=${message}`, '_blank');
+        }
+
+        // Initialize Menu
+        renderMenu('all');
     </script>
 </body>
 </html>
