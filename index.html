@@ -456,7 +456,7 @@
                     <ul class="space-y-3 text-sm text-amber-200/80">
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-location-dot text-amber-400"></i>
-                            <span>г. Астана, Республика Казахстан</span>
+                            <span>г. Астана, ул. Бейбарыс Султана 31 </span>
                         </li>
                         <li class="flex items-center gap-3">
                             <i class="fa-solid fa-phone text-amber-400"></i>
@@ -492,78 +492,82 @@
         // Menu Items Database
         const menuItems = [
             {
-                id: 1,
-                name: "Вишневый пирог",
-                category: "sweet",
-                price: 4200,
-                weight: "1.0 кг",
-                desc: "Сочная спелая вишня без косточек в нежном песочном тесте.",
-                image: "https://images.unsplash.com/photo-1519869325930-281384150729?auto=format&fit=crop&q=80&w=600"
-            },
-            {
-                id: 2,
-                name: "Яблочно-коричный пирог",
-                category: "sweet",
-                price: 3800,
-                weight: "1.0 кг",
-                desc: "Классический пирог с карамелизированными яблоками и ароматной корицей.",
-                image: "https://images.unsplash.com/photo-1568571780765-9276ac8b75a2?auto=format&fit=crop&q=80&w=600"
-            },
-            {
-                id: 3,
-                name: "Пирог с Мясом и Картофелем",
-                category: "savory",
-                price: 4900,
-                weight: "1.1 кг",
-                desc: "Сытный пирог с рубленой говядиной, луком и нежным картофелем.",
-                image: "https://images.unsplash.com/photo-1621996346565-e3d5d6288307?auto=format&fit=crop&q=80&w=600"
-            },
-            {
-                id: 4,
-                name: "Пирог с Курицей и Грибами",
-                category: "savory",
-                price: 4600,
-                weight: "1.0 кг",
-                desc: "Нежное куриное филе, шампиньоны и сливочный соус в хрустящем тесте.",
-                image: "https://images.unsplash.com/photo-1572383672419-ab35444a6934?auto=format&fit=crop&q=80&w=600"
-            },
-            {
-                id: 5,
-                name: "Осетинский пирог с сыром и зеленью",
-                category: "savory",
-                price: 4100,
-                weight: "800 г",
-                desc: "Традиционный горячий пирог со свежим сулугуни и ароматным укропом.",
-                image: "https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&q=80&w=600"
-            },
-            {
-                id: 6,
-                name: "Ягодное ассорти (Тарт)",
-                category: "sweet",
-                price: 5200,
-                weight: "950 г",
-                desc: "Микс из клубники, малины и черники на заварном креме.",
-                image: "https://images.unsplash.com/photo-1464305795204-6f5bbfc7fb81?auto=format&fit=crop&q=80&w=600"
-            },
-            {
-                id: 7,
-                name: "Самса с Говядиной (5 шт)",
-                category: "pastry",
-                price: 2500,
-                weight: "500 г",
-                desc: "Хрустящее слоеное тесто, рубленое мясо со специями.",
-                image: "https://images.unsplash.com/photo-1541592106381-b31e9677c0e5?auto=format&fit=crop&q=80&w=600"
-            },
-            {
-                id: 8,
-                name: "Круассаны с шоколадом (4 шт)",
-                category: "pastry",
-                price: 2200,
-                weight: "350 г",
-                desc: "Французские пышные круассаны с бельгийским шоколадом.",
-                image: "https://images.unsplash.com/photo-1555507036-ab1f4038808a?auto=format&fit=crop&q=80&w=600"
-            }
-        ];
+              // Menu Items Database
+    const menuItems = [
+      {
+        id: 1,
+        name: "Самса с говядиной",
+        category: "baked",
+        price: 350,
+        weight: "1 шт.",
+        desc: "Сочная начинка из отборной говядины с луком и ароматными специями в слоёном золотистом тесте.",
+        image: "images/01_samsa_govyadina.jpg"
+      },
+      {
+        id: 2,
+        name: "Самса с курицей",
+        category: "baked",
+        price: 300,
+        weight: "1 шт.",
+        desc: "Нежное куриное филе с пряными специями и зеленью в хрустящей слоёной корочке.",
+        image: "images/02_samsa_kuritsa.jpg"
+      },
+      {
+        id: 3,
+        name: "Чебурек мини",
+        category: "baked",
+        price: 350,
+        weight: "1 шт.",
+        desc: "Аппетитные мини-чебуреки с сочным мясным фаршем в тонком хрустящем тесте.",
+        image: "images/03_cheburek_mini-1.jpg"
+      },
+      {
+        id: 4,
+        name: "Баурсаки",
+        category: "baked",
+        price: 1900,
+        weight: "1 кг",
+        desc: "Традиционные пышные, воздушные и румяные баурсаки, приготовленные по классическому домашнему рецепту.",
+        image: "images/04_baursaki.jpg"
+      },
+      {
+        id: 5,
+        name: "Шелпек",
+        category: "baked",
+        price: 350,
+        weight: "1 шт.",
+        desc: "Тонкие, нежные и аппетитные традиционные лепёшки, обжаренные до золотистой корочки.",
+        image: "images/05_shelpek.jpg"
+      },
+      {
+        id: 6,
+        name: "Чак-чак",
+        category: "sweet",
+        price: 5000,
+        weight: "1 кг",
+        desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма — идеальное лакомство к чаю.",
+        image: "images/06_chak_chak-1.jpg"
+      },
+      {
+        id: 7,
+        name: "Булочки",
+        category: "sweet",
+        price: 120,
+        weight: "1 шт.",
+        desc: "Мягкая, ароматная и пышная сдобная выпечка с аппетитной посыпкой.",
+        image: "images/07_bulochki.jpg"
+      },
+      {
+        id: 8,
+        name: "Буйреки",
+        category: "baked",
+        price: 5000,
+        weight: "1 кг",
+        desc: "Традиционные сочные пирожки с фигурным краешком и богатой мясной начинкой.",
+        image: "images/08_buyreki.jpg"
+      }
+    ];
+        
 
         // Shopping Cart State
         let cart = [];
