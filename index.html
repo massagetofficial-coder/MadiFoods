@@ -20,23 +20,28 @@
 
     <!-- Header / Navbar -->
     <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-            <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md border-2 border-yellow-400 overflow-hidden">
-    <img src="images/мади.png" alt="Madi Foods Logo" class="w-full h-full object-cover">
-</div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
+            
+            <!-- Logo & Brand Name -->
+            <div class="flex items-center gap-3 shrink-0">
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md border-2 border-yellow-400 overflow-hidden shrink-0">
+                    <img src="мади.png" alt="Madi Foods Logo" class="w-full h-full object-cover">
+                </div>
                 <div>
                     <span class="text-xl font-extrabold tracking-tight text-emerald-950 block leading-none">Madi Foods</span>
                     <span class="text-xs font-semibold text-emerald-700 tracking-wider uppercase">Аспаздық • Кулинария</span>
                 </div>
             </div>
 
+            <!-- Navigation Links -->
             <nav class="hidden lg:flex items-center gap-6 font-medium text-sm text-neutral-600">
                 <a href="#menu" class="hover:text-emerald-700 transition-colors">Меню</a>
                 <a href="#about" class="hover:text-emerald-700 transition-colors">О нас</a>
                 <a href="#contacts" class="hover:text-emerald-700 transition-colors">Контакты</a>
             </nav>
 
-            <div class="flex items-center gap-4">
+            <!-- Phone & Cart -->
+            <div class="flex items-center gap-4 shrink-0">
                 <a href="tel:+77074328272" class="hidden sm:flex items-center gap-2 text-emerald-950 font-bold hover:text-emerald-700">
                     <i class="fa-solid fa-phone text-emerald-700"></i>
                     <span>+7 707 432-82-72</span>
@@ -47,12 +52,13 @@
                     <span id="cartCount" class="absolute -top-1 -right-1 bg-amber-500 text-neutral-950 text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-extrabold border-2 border-white">0</span>
                 </button>
             </div>
+
         </div>
     </header>
 
     <!-- Hero Section -->
     <section class="relative bg-emerald-950 text-white overflow-hidden py-20 lg:py-28">
-        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('images/01_samsa_govyadina.jpg');"></div>
+        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('01_samsa_govyadina.png');"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/90 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="max-w-2xl">
@@ -112,7 +118,7 @@
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
                 <h3 class="text-yellow-400 font-bold text-lg mb-3 flex items-center gap-2">
-                    <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-xs font-black">MF</span> 
+                    <img src="мади.png" alt="Madi Foods Logo" class="w-8 h-8 rounded-full border border-yellow-400 object-cover"> 
                     Madi Foods
                 </h3>
                 <p class="text-xs text-emerald-300/80">Кулинария и пекарня высшего качества.</p>
@@ -169,7 +175,7 @@
                 price: 350,
                 weight: "1 шт.",
                 desc: "Сочная начинка из отборной говядины с луком и специями в слоёном тесте.",
-                image: "images/01_samsa_govyadina.jpg"
+                image: "01_samsa_govyadina.png"
             },
             {
                 id: 2,
@@ -178,7 +184,7 @@
                 price: 300,
                 weight: "1 шт.",
                 desc: "Нежное куриное филе с пряными специями в хрустящей корочке.",
-                image: "images/02_samsa_kuritsa.jpg"
+                image: "02_samsa_kuritsa.png"
             },
             {
                 id: 3,
@@ -187,7 +193,7 @@
                 price: 350,
                 weight: "1 шт.",
                 desc: "Аппетитные мини-чебуреки с сочным мясным фаршем.",
-                image: "images/03_cheburek_mini-1.jpg"
+                image: "03_cheburek_mini-1.png"
             },
             {
                 id: 4,
@@ -196,7 +202,7 @@
                 price: 1900,
                 weight: "1 кг",
                 desc: "Традиционные пышные, воздушные и румяные баурсаки.",
-                image: "images/04_baursaki.jpg"
+                image: "04_baursaki.png"
             },
             {
                 id: 5,
@@ -205,7 +211,7 @@
                 price: 350,
                 weight: "1 шт.",
                 desc: "Тонкие, нежные и аппетитные традиционные лепёшки.",
-                image: "images/05_shelpek.jpg"
+                image: "05_shelpek.png"
             },
             {
                 id: 6,
@@ -214,7 +220,7 @@
                 price: 5000,
                 weight: "1 кг",
                 desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма.",
-                image: "images/06_chak_chak-1.jpg"
+                image: "06_chak_chak-1.png"
             },
             {
                 id: 7,
@@ -223,7 +229,7 @@
                 price: 120,
                 weight: "1 шт.",
                 desc: "Мягкая, ароматная и пышная сдобная выпечка.",
-                image: "images/07_bulochki.jpg"
+                image: "07_bulochki.png"
             },
             {
                 id: 8,
@@ -232,61 +238,7 @@
                 price: 5000,
                 weight: "1 кг",
                 desc: "Традиционные сочные пирожки с богатой мясной начинкой.",
-                image: "images/08_buyreki.jpg"
-            },
-            {
-                id: 9,
-                name: "Салат Столичный / Оливье",
-                category: "salads",
-                price: 2800,
-                weight: "1 кг",
-                desc: "Классический домашний салат из свежих ингредиентов.",
-                image: "images/salad_olivie.jpg"
-            },
-            {
-                id: 10,
-                name: "Мясной пирог с картофелем",
-                category: "meat_pies",
-                price: 4500,
-                weight: "1 шт. (около 1 кг)",
-                desc: "Сытный пирог с сочным мясом и картофелем.",
-                image: "images/meat_pie.jpg"
-            },
-            {
-                id: 11,
-                name: "Сладкий пирог с вишней",
-                category: "sweet_pies",
-                price: 4200,
-                weight: "1 шт.",
-                desc: "Нежный песочный пирог со спелой вишней без косточек.",
-                image: "images/sweet_pie_cherry.jpg"
-            },
-            {
-                id: 12,
-                name: "Горячее блюдо: Манты",
-                category: "hot_dishes",
-                price: 3200,
-                weight: "1 порция",
-                desc: "Сочные домашние манты из рубленного мяса с луком.",
-                image: "images/manty.jpg"
-            },
-            {
-                id: 13,
-                name: "Торт Медовик домашний",
-                category: "cakes",
-                price: 6500,
-                weight: "1 шт.",
-                desc: "Тонкие медовые коржи с нежным сливочным кремом.",
-                image: "images/cake_medovik.jpg"
-            },
-            {
-                id: 14,
-                name: "Сет на компанию «Пир»",
-                category: "sets",
-                price: 12000,
-                weight: "Ассорти",
-                desc: "Большой набор выпечки, самсы и баурсаков для всей семьи.",
-                image: "images/set_company.jpg"
+                image: "08_buyreki.png"
             }
         ];
 
