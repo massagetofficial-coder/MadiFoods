@@ -12,6 +12,13 @@
             font-family: 'Plus Jakarta Sans', sans-serif; 
             overflow-x: hidden; 
         }
+        /* Анимация пульсации для иконки корзины */
+        @keyframes bounce-short {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.25); }
+        .animate-bounce-short {
+            animation: bounce-short 0.3s ease-in-out;
+        }
     </style>
 </head>
 <body class="bg-emerald-50/20 text-neutral-800 antialiased min-h-screen flex flex-col justify-between">
@@ -49,7 +56,7 @@
                     <i class="fa-solid fa-phone text-emerald-700"></i>
                     <span>+7 707 432-82-72</span>
                 </a>
-                <button onclick="toggleCart()" class="relative bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2.5 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all transform hover:scale-105">
+                <button id="cartBtn" onclick="toggleCart()" class="relative bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2.5 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all transform hover:scale-105">
                     <i class="fa-solid fa-basket-shopping"></i>
                     <span>Корзина</span>
                     <span id="cartCount" class="absolute -top-1 -right-1 bg-amber-500 text-neutral-950 text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-extrabold border-2 border-white">0</span>
@@ -115,6 +122,12 @@
             <!-- Items rendered dynamically via JS -->
         </div>
     </section>
+
+    <!-- Toast Notification (Всплывающее уведомление) -->
+    <div id="toastNotification" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white px-6 py-3 rounded-2xl shadow-2xl z-50 flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
+        <i class="fa-solid fa-check-circle text-yellow-400 text-lg"></i>
+        <span id="toastText" class="text-sm font-semibold">Товар добавлен в корзину!</span>
+    </div>
 
     <!-- Footer -->
     <footer id="contacts" class="bg-emerald-950 text-emerald-100 py-12 mt-20 border-t border-emerald-900 w-full">
@@ -306,6 +319,28 @@
                 cart.push({ ...item, quantity: 1 });
             }
             updateCartUI();
+            showToast(`«${item.name}» добавлено в корзину!`);
+            animateCartIcon();
+        }
+
+        function animateCartIcon() {
+            const cartBtn = document.getElementById('cartBtn');
+            cartBtn.classList.add('animate-bounce-short');
+            setTimeout(() => {
+                cartBtn.classList.remove('animate-bounce-short');
+            }, 300);
+        }
+
+        function showToast(text) {
+            const toast = document.getElementById('toastNotification');
+            const toastText = document.getElementById('toastText');
+            toastText.innerText = text;
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            
+            // Скрыть через 2.5 секунды
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 2500);
         }
 
         function updateCartUI() {
