@@ -8,7 +8,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
-        body { font-family: 'Plus Jakarta Sans', sans-serif; }
+        html, body { 
+            font-family: 'Plus Jakarta Sans', sans-serif; 
+            overflow-x: hidden; 
+        }
     </style>
 </head>
 <body class="bg-emerald-50/20 text-neutral-800 antialiased min-h-screen flex flex-col justify-between">
@@ -19,7 +22,7 @@
     </div>
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
             <!-- Logo & Brand Name -->
@@ -57,7 +60,7 @@
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-emerald-950 text-white overflow-hidden py-20 lg:py-28">
+    <section class="relative bg-emerald-950 text-white overflow-hidden py-20 lg:py-28 w-full">
         <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('01_samsa_govyadina.png');"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/90 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -114,7 +117,7 @@
     </section>
 
     <!-- Footer -->
-    <footer id="contacts" class="bg-emerald-950 text-emerald-100 py-12 mt-20 border-t border-emerald-900">
+    <footer id="contacts" class="bg-emerald-950 text-emerald-100 py-12 mt-20 border-t border-emerald-900 w-full">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
                 <h3 class="text-yellow-400 font-bold text-lg mb-3 flex items-center gap-2">
