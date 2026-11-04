@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madi Foods - Пекарня и полуфабрикаты в Астане</title>
+    <title>Madi Foods - Кулинария и пекарня в Кокшетау и Астане</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -11,67 +11,66 @@
         body { font-family: 'Plus Jakarta Sans', sans-serif; }
     </style>
 </head>
-<body class="bg-amber-50/30 text-neutral-800 antialiased min-h-screen flex flex-col justify-between">
+<body class="bg-emerald-50/20 text-neutral-800 antialiased min-h-screen flex flex-col justify-between">
 
     <!-- Top Bar -->
-    <div class="bg-amber-900 text-amber-100 text-xs py-2 px-4 text-center font-medium">
-        🔥 Горячие домашние пироги и полуфабрикаты с доставкой по Астане за 60 минут! При заказе от 10 000 ₸ — бесплатная доставка.
+    <div class="bg-emerald-900 text-emerald-100 text-xs py-2 px-4 text-center font-medium">
+        ✨ Свежая выпечка, полуфабрикаты, торты и горячие блюда с доставкой! Заказы принимаем ежедневно.
     </div>
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-amber-100 shadow-sm">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
             <div class="flex items-center gap-3">
-                <div class="w-12 h-12 rounded-full bg-amber-600 flex items-center justify-center text-white font-black text-xl shadow-md">
-                    MF
+                <div class="w-12 h-12 rounded-full bg-emerald-800 flex items-center justify-center text-yellow-400 font-black text-xl shadow-md border-2 border-yellow-400 overflow-hidden p-1">
+                    <span class="text-xs font-extrabold tracking-tighter">M-Di</span>
                 </div>
                 <div>
-                    <span class="text-xl font-extrabold tracking-tight text-amber-900 block leading-none">Madi Foods</span>
-                    <span class="text-xs font-semibold text-amber-700 tracking-wider uppercase">Пекарня & Полуфабрикаты • Астана</span>
+                    <span class="text-xl font-extrabold tracking-tight text-emerald-950 block leading-none">Madi Foods</span>
+                    <span class="text-xs font-semibold text-emerald-700 tracking-wider uppercase">Аспаздық • Кулинария</span>
                 </div>
             </div>
 
-            <nav class="hidden md:flex items-center gap-8 font-medium text-sm text-neutral-600">
-                <a href="#menu" class="hover:text-amber-600 transition-colors">Меню</a>
-                <a href="#about" class="hover:text-amber-600 transition-colors">О нас</a>
-                <a href="#delivery" class="hover:text-amber-600 transition-colors">Доставка и Оплата</a>
-                <a href="#contacts" class="hover:text-amber-600 transition-colors">Контакты</a>
+            <nav class="hidden lg:flex items-center gap-6 font-medium text-sm text-neutral-600">
+                <a href="#menu" class="hover:text-emerald-700 transition-colors">Меню</a>
+                <a href="#about" class="hover:text-emerald-700 transition-colors">О нас</a>
+                <a href="#contacts" class="hover:text-emerald-700 transition-colors">Контакты</a>
             </nav>
 
             <div class="flex items-center gap-4">
-                <a href="tel:+77074328272" class="hidden sm:flex items-center gap-2 text-amber-900 font-bold hover:text-amber-700">
-                    <i class="fa-solid fa-phone text-amber-600"></i>
+                <a href="tel:+77074328272" class="hidden sm:flex items-center gap-2 text-emerald-950 font-bold hover:text-emerald-700">
+                    <i class="fa-solid fa-phone text-emerald-700"></i>
                     <span>+7 707 432-82-72</span>
                 </a>
-                <button onclick="toggleCart()" class="relative bg-amber-600 hover:bg-amber-700 text-white px-5 py-2.5 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all transform hover:scale-105">
+                <button onclick="toggleCart()" class="relative bg-emerald-700 hover:bg-emerald-800 text-white px-5 py-2.5 rounded-full font-semibold shadow-md flex items-center gap-2 transition-all transform hover:scale-105">
                     <i class="fa-solid fa-basket-shopping"></i>
                     <span>Корзина</span>
-                    <span id="cartCount" class="absolute -top-1 -right-1 bg-red-500 text-white text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-bold border-2 border-white">0</span>
+                    <span id="cartCount" class="absolute -top-1 -right-1 bg-amber-500 text-neutral-950 text-[10px] w-5 h-5 rounded-full flex items-center justify-center font-extrabold border-2 border-white">0</span>
                 </button>
             </div>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="relative bg-amber-900 text-white overflow-hidden py-20 lg:py-28">
-        <div class="absolute inset-0 opacity-20 bg-cover bg-center" style="background-image: url('images/01_samsa_govyadina.jpg');"></div>
-        <div class="absolute inset-0 bg-gradient-to-r from-amber-950 via-amber-900/90 to-transparent"></div>
+    <section class="relative bg-emerald-950 text-white overflow-hidden py-20 lg:py-28">
+        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('images/01_samsa_govyadina.jpg');"></div>
+        <div class="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/90 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
             <div class="max-w-2xl">
-                <span class="inline-block bg-amber-500/20 text-amber-300 border border-amber-400/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
-                    ✨ Традиционная выпечка в Астане
+                <span class="inline-block bg-yellow-500/20 text-yellow-300 border border-yellow-400/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
+                    🥐 Домашняя кулинария и выпечка
                 </span>
                 <h1 class="text-4xl sm:text-5xl lg:text-6xl font-black tracking-tight mb-6 leading-tight">
-                    Настоящие домашние пироги и полуфабрикаты
+                    Вкусно, как дома. Готовим с любовью!
                 </h1>
-                <p class="text-lg text-amber-100 mb-8 font-light">
-                    Выпекаем с любовью каждый день! Только свежие натуральные ингредиенты, хрустящее тесто и много сочной начинки.
+                <p class="text-lg text-emerald-100 mb-8 font-light">
+                    Широкий выбор полуфабрикатов, свежей выпечки, праздничных тортов, горячих блюд и салатов в Кокшетау и Астане.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#menu" class="bg-amber-500 hover:bg-amber-600 text-amber-950 font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
-                        Выбрать продукцию &rarr;
+                    <a href="#menu" class="bg-yellow-500 hover:bg-yellow-400 text-neutral-950 font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                        Смотреть меню &rarr;
                     </a>
-                    <a href="https://wa.me/77074328272" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center gap-2">
+                    <a href="https://wa.me/77074328272" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center gap-2">
                         <i class="fa-brands fa-whatsapp text-xl"></i> Написать в WhatsApp
                     </a>
                 </div>
@@ -82,15 +81,25 @@
     <!-- Menu Section -->
     <section id="menu" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow w-full">
         <div class="text-center max-w-xl mx-auto mb-12">
-            <h2 class="text-3xl font-extrabold text-amber-950 mb-3">Наше меню</h2>
-            <p class="text-neutral-600">Выберите любимое угощение, добавьте в корзину и оформите заказ за пару кликов.</p>
+            <h2 class="text-3xl font-extrabold text-emerald-950 mb-3">Наше меню</h2>
+            <p class="text-neutral-600">Выберите категорию и добавьте понравившиеся блюда в корзину.</p>
         </div>
 
         <!-- Category Filters -->
-        <div class="flex justify-center gap-2 sm:gap-4 mb-10 flex-wrap">
-            <button onclick="filterMenu('all')" id="btn-all" class="category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-amber-900 text-white shadow-md">Все позиции</button>
-            <button onclick="filterMenu('baked')" id="btn-baked" class="category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-amber-100 border border-amber-200">Выпечка и полуфабрикаты</button>
-            <button onclick="filterMenu('sweet')" id="btn-sweet" class="category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-amber-100 border border-amber-200">Сладости</button>
+        <div id="categoryFilters" class="flex justify-center gap-2 mb-10 flex-wrap">
+            <button onclick="filterMenu('all')" id="btn-all" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md">Все</button>
+            <button onclick="filterMenu('semifinished')" id="btn-semifinished" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Полуфабрикаты</button>
+            <button onclick="filterMenu('baked')" id="btn-baked" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Выпечка</button>
+            <button onclick="filterMenu('sweet_pies')" id="btn-sweet_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Сладкие пироги</button>
+            <button onclick="filterMenu('meat_pies')" id="btn-meat_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Мясные пироги</button>
+            <button onclick="filterMenu('hot_dishes')" id="btn-hot_dishes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Горячие блюда</button>
+            <button onclick="filterMenu('salads')" id="btn-salads" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Салаты</button>
+            <button onclick="filterMenu('cakes')" id="btn-cakes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Торты</button>
+            <button onclick="filterMenu('pastries')" id="btn-pastries" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Пирожные</button>
+            <button onclick="filterMenu('rolls')" id="btn-rolls" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Рулеты</button>
+            <button onclick="filterMenu('trifles')" id="btn-trifles" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Трайфлы</button>
+            <button onclick="filterMenu('desserts')" id="btn-desserts" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Десерты</button>
+            <button onclick="filterMenu('sets')" id="btn-sets" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Сеты</button>
         </div>
 
         <!-- Menu Grid -->
@@ -100,25 +109,29 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-amber-950 text-amber-200 py-12 mt-20 border-t border-amber-900">
+    <footer id="contacts" class="bg-emerald-950 text-emerald-100 py-12 mt-20 border-t border-emerald-900">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
             <div>
-                <h3 class="text-white font-bold text-lg mb-3">Madi Foods</h3>
-                <p class="text-xs text-amber-300/80">Пекарня горячих пирогов и полуфабрикатов #1 в Астане.</p>
+                <h3 class="text-yellow-400 font-bold text-lg mb-3 flex items-center gap-2">
+                    <span class="w-8 h-8 rounded-full bg-emerald-800 flex items-center justify-center text-xs font-black">MF</span> 
+                    Madi Foods
+                </h3>
+                <p class="text-xs text-emerald-300/80">Кулинария и пекарня высшего качества.</p>
             </div>
-            <div id="contacts">
-                <h3 class="text-white font-bold text-lg mb-3">Контакты</h3>
-                <p class="text-xs text-amber-300/80 mb-1"><i class="fa-solid fa-phone mr-2"></i> +7 707 432-82-72</p>
-                <p class="text-xs text-amber-300/80"><i class="fa-solid fa-location-dot mr-2"></i> г. Астана</p>
+            <div>
+                <h3 class="text-white font-bold text-lg mb-3">Наши филиалы и адреса</h3>
+                <p class="text-xs text-emerald-300/80 mb-2"><strong class="text-white">г. Кокшетау:</strong> ул. Канайби би, 12</p>
+                <p class="text-xs text-emerald-300/80 mb-2"><strong class="text-white">г. Астана:</strong> ул. Бейбарыс Султана, 31</p>
+                <p class="text-xs text-emerald-300/80"><i class="fa-solid fa-phone mr-2"></i> +7 707 432-82-72</p>
             </div>
-            <div id="delivery">
+            <div>
                 <h3 class="text-white font-bold text-lg mb-3">Режим работы</h3>
-                <p class="text-xs text-amber-300/80 mb-1"><i class="fa-regular fa-clock mr-2"></i>09:00 - 21:00</p>
+                <p class="text-xs text-emerald-300/80 mb-1"><i class="fa-regular fa-clock mr-2"></i> Ежедневно с 09:00 до 21:00</p>
             </div>
         </div>
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-amber-900/60 pt-8 text-center text-xs text-amber-300/60 flex flex-col sm:flex-row justify-between items-center gap-4">
-            <p>&copy; 2026 Madi Foods Астана. Все права защищены.</p>
-            <p>Пекарня горячих пирогов #1 в Астане</p>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-emerald-900/60 pt-8 text-center text-xs text-emerald-300/60 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <p>&copy; 2026 Madi Foods. Все права защищены.</p>
+            <p>Кулинария и пекарня в Кокшетау и Астане</p>
         </div>
     </footer>
 
@@ -139,7 +152,7 @@
                     <span>Итого:</span>
                     <span id="cartTotal">0 ₸</span>
                 </div>
-                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
+                <button onclick="checkoutWhatsApp()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3.5 rounded-xl shadow-lg transition-all flex items-center justify-center gap-2">
                     <i class="fa-brands fa-whatsapp text-xl"></i> Заказать в WhatsApp
                 </button>
             </div>
@@ -148,7 +161,7 @@
 
     <!-- JavaScript Data and Functions -->
     <script>
-        // Menu Items Database (8 curated products)
+        // Menu Items Database
         const menuItems = [
             {
                 id: 1,
@@ -156,7 +169,7 @@
                 category: "baked",
                 price: 350,
                 weight: "1 шт.",
-                desc: "Сочная начинка из отборной говядины с луком и ароматными специями в слоёном золотистом тесте.",
+                desc: "Сочная начинка из отборной говядины с луком и специями в слоёном тесте.",
                 image: "images/01_samsa_govyadina.jpg"
             },
             {
@@ -165,62 +178,116 @@
                 category: "baked",
                 price: 300,
                 weight: "1 шт.",
-                desc: "Нежное куриное филе с пряными специями и зеленью в хрустящей слоёной корочке.",
+                desc: "Нежное куриное филе с пряными специями в хрустящей корочке.",
                 image: "images/02_samsa_kuritsa.jpg"
             },
             {
                 id: 3,
                 name: "Чебурек мини",
-                category: "baked",
+                category: "semifinished",
                 price: 350,
                 weight: "1 шт.",
-                desc: "Аппетитные мини-чебуреки с сочным мясным фаршем в тонком хрустящем тесте.",
+                desc: "Аппетитные мини-чебуреки с сочным мясным фаршем.",
                 image: "images/03_cheburek_mini-1.jpg"
             },
             {
                 id: 4,
-                name: "Баурсаки",
+                name: "Баурсаки домашние",
                 category: "baked",
                 price: 1900,
                 weight: "1 кг",
-                desc: "Традиционные пышные, воздушные и румяные баурсаки, приготовленные по классическому домашнему рецепту.",
+                desc: "Традиционные пышные, воздушные и румяные баурсаки.",
                 image: "images/04_baursaki.jpg"
             },
             {
                 id: 5,
-                name: "Шелпек",
+                name: "Шелпек традиционный",
                 category: "baked",
                 price: 350,
                 weight: "1 шт.",
-                desc: "Тонкие, нежные и аппетитные традиционные лепёшки, обжаренные до золотистой корочки.",
+                desc: "Тонкие, нежные и аппетитные традиционные лепёшки.",
                 image: "images/05_shelpek.jpg"
             },
             {
                 id: 6,
-                name: "Чак-чак",
-                category: "sweet",
+                name: "Чак-чак медовый",
+                category: "desserts",
                 price: 5000,
                 weight: "1 кг",
-                desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма — идеальное лакомство к чаю.",
+                desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма.",
                 image: "images/06_chak_chak-1.jpg"
             },
             {
                 id: 7,
-                name: "Булочки",
-                category: "sweet",
+                name: "Булочки сдоба",
+                category: "baked",
                 price: 120,
                 weight: "1 шт.",
-                desc: "Мягкая, ароматная и пышная сдобная выпечка с аппетитной посыпкой.",
+                desc: "Мягкая, ароматная и пышная сдобная выпечка.",
                 image: "images/07_bulochki.jpg"
             },
             {
                 id: 8,
-                name: "Буйреки",
-                category: "baked",
+                name: "Буйреки фирменные",
+                category: "meat_pies",
                 price: 5000,
                 weight: "1 кг",
-                desc: "Традиционные сочные пирожки с фигурным краешком и богатой мясной начинкой.",
+                desc: "Традиционные сочные пирожки с богатой мясной начинкой.",
                 image: "images/08_buyreki.jpg"
+            },
+            {
+                id: 9,
+                name: "Салат Столичный / Оливье",
+                category: "salads",
+                price: 2800,
+                weight: "1 кг",
+                desc: "Классический домашний салат из свежих ингредиентов.",
+                image: "images/salad_olivie.jpg"
+            },
+            {
+                id: 10,
+                name: "Мясной пирог с картофелем",
+                category: "meat_pies",
+                price: 4500,
+                weight: "1 шт. (около 1 кг)",
+                desc: "Сытный пирог с сочным мясом и картофелем.",
+                image: "images/meat_pie.jpg"
+            },
+            {
+                id: 11,
+                name: "Сладкий пирог с вишней",
+                category: "sweet_pies",
+                price: 4200,
+                weight: "1 шт.",
+                desc: "Нежный песочный пирог со спелой вишней без косточек.",
+                image: "images/sweet_pie_cherry.jpg"
+            },
+            {
+                id: 12,
+                name: "Горячее блюдо: Манты",
+                category: "hot_dishes",
+                price: 3200,
+                weight: "1 порция",
+                desc: "Сочные домашние манты из рубленного мяса с луком.",
+                image: "images/manty.jpg"
+            },
+            {
+                id: 13,
+                name: "Торт Медовик домашний",
+                category: "cakes",
+                price: 6500,
+                weight: "1 шт.",
+                desc: "Тонкие медовые коржи с нежным сливочным кремом.",
+                image: "images/cake_medovik.jpg"
+            },
+            {
+                id: 14,
+                name: "Сет на компанию «Пир»",
+                category: "sets",
+                price: 12000,
+                weight: "Ассорти",
+                desc: "Большой набор выпечки, самсы и баурсаков для всей семьи.",
+                image: "images/set_company.jpg"
             }
         ];
 
@@ -234,15 +301,20 @@
                 ? menuItems 
                 : menuItems.filter(item => item.category === category);
 
+            if (filteredItems.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-center py-12 text-neutral-400">В этой категории скоро появятся новинки!</div>';
+                return;
+            }
+
             filteredItems.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-3xl overflow-hidden border border-amber-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between";
+                card.className = "bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between";
                 card.innerHTML = `
-                    <div class="relative overflow-hidden h-52">
+                    <div class="relative overflow-hidden h-52 bg-emerald-50">
                         <img src="${item.image}" alt="${item.name}" 
                              class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                             onerror="this.src='https://placehold.co/600x400/d97706/ffffff?text=${encodeURIComponent(item.name)}'">
-                        <span class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-amber-900 text-xs font-bold px-3 py-1 rounded-full shadow-md">
+                             onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=${encodeURIComponent(item.name)}'">
+                        <span class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-emerald-950 text-xs font-bold px-3 py-1 rounded-full shadow-md">
                             ${item.weight}
                         </span>
                     </div>
@@ -252,8 +324,8 @@
                             <p class="text-xs text-neutral-500 mb-4 line-clamp-2">${item.desc}</p>
                         </div>
                         <div class="flex items-center justify-between pt-4 border-t border-neutral-100 mt-2">
-                            <span class="text-lg font-extrabold text-amber-900">${item.price.toLocaleString()} ₸</span>
-                            <button onclick="addToCart(${item.id})" class="bg-amber-100 hover:bg-amber-600 text-amber-950 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5">
+                            <span class="text-lg font-extrabold text-emerald-900">${item.price.toLocaleString()} ₸</span>
+                            <button onclick="addToCart(${item.id})" class="bg-emerald-100 hover:bg-emerald-700 text-emerald-950 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5">
                                 <i class="fa-solid fa-plus"></i> В корзину
                             </button>
                         </div>
@@ -265,9 +337,9 @@
 
         function filterMenu(category) {
             document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.className = "category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-amber-100 border border-amber-200";
+                btn.className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200";
             });
-            document.getElementById(`btn-${category}`).className = "category-btn px-6 py-2.5 rounded-full font-semibold text-sm transition-all bg-amber-900 text-white shadow-md";
+            document.getElementById(`btn-${category}`).className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md";
             renderMenu(category);
         }
 
@@ -307,7 +379,7 @@
                         <span class="text-xs text-neutral-500">${item.price.toLocaleString()} ₸ x ${item.quantity}</span>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span class="text-sm font-bold text-amber-900">${(item.price * item.quantity).toLocaleString()} ₸</span>
+                        <span class="text-sm font-bold text-emerald-900">${(item.price * item.quantity).toLocaleString()} ₸</span>
                         <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-xs px-2 py-1"><i class="fa-solid fa-trash"></i></button>
                     </div>
                 `;
