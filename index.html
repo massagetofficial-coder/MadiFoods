@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Madi Foods - Кулинария и пекарня в Кокшетау и Астане</title>
+    <!-- Иконка сайта (Фавиконка) в браузере -->
+    <link rel="icon" type="image/png" href="мади.png">
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
@@ -12,10 +14,10 @@
             font-family: 'Plus Jakarta Sans', sans-serif; 
             overflow-x: hidden; 
         }
-        /* Анимация пульсации для иконки корзины */
         @keyframes bounce-short {
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.25); }
+        }
         .animate-bounce-short {
             animation: bounce-short 0.3s ease-in-out;
         }
@@ -123,7 +125,7 @@
         </div>
     </section>
 
-    <!-- Toast Notification (Всплывающее уведомление) -->
+    <!-- Toast Notification -->
     <div id="toastNotification" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white px-6 py-3 rounded-2xl shadow-2xl z-50 flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
         <i class="fa-solid fa-check-circle text-yellow-400 text-lg"></i>
         <span id="toastText" class="text-sm font-semibold">Товар добавлен в корзину!</span>
@@ -337,7 +339,6 @@
             toastText.innerText = text;
             toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
             
-            // Скрыть через 2.5 секунды
             setTimeout(() => {
                 toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
             }, 2500);
