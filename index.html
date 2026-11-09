@@ -18,8 +18,22 @@
             0%, 100% { transform: scale(1); }
             50% { transform: scale(1.25); }
         }
+        @keyframes pulse-slow {
+            0%, 100% { transform: scale(1); opacity: 1; }
+            50% { transform: scale(1.1); opacity: 0.85; }
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
         .animate-bounce-short {
             animation: bounce-short 0.3s ease-in-out;
+        }
+        .animate-pulse-whatsapp {
+            animation: pulse-slow 2s infinite ease-in-out;
+        }
+        .fade-in-section {
+            animation: fadeIn 0.8s ease-out forwards;
         }
     </style>
 </head>
@@ -31,12 +45,12 @@
     </div>
 
     <!-- Header / Navbar -->
-    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm w-full">
+    <header class="sticky top-0 z-50 bg-white/95 backdrop-blur-md border-b border-emerald-100 shadow-sm w-full transition-all duration-300">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-4">
             
             <!-- Logo & Brand Name -->
             <div class="flex items-center gap-3 shrink-0">
-                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md border-2 border-yellow-400 overflow-hidden shrink-0">
+                <div class="w-12 h-12 rounded-full bg-white flex items-center justify-center shadow-md border-2 border-yellow-400 overflow-hidden shrink-0 transition-transform duration-300 hover:scale-105">
                     <img src="мади.png" alt="Madi Foods Logo" class="w-full h-full object-cover">
                 </div>
                 <div>
@@ -76,10 +90,10 @@
 
     <!-- Hero Section -->
     <section class="relative bg-emerald-950 text-white overflow-hidden py-20 lg:py-28 w-full">
-        <div class="absolute inset-0 opacity-25 bg-cover bg-center" style="background-image: url('01_samsa_govyadina.png');"></div>
+        <div class="absolute inset-0 opacity-25 bg-cover bg-center transition-transform duration-1000 hover:scale-105" style="background-image: url('01_samsa_govyadina.png');"></div>
         <div class="absolute inset-0 bg-gradient-to-r from-emerald-950 via-emerald-900/90 to-transparent"></div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-            <div class="max-w-2xl">
+            <div class="max-w-2xl fade-in-section">
                 <span class="inline-block bg-yellow-500/20 text-yellow-300 border border-yellow-400/30 text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wider mb-4">
                     🥐 Домашняя кулинария и полуфабрикаты
                 </span>
@@ -90,10 +104,10 @@
                     Широкий выбор полуфабрикатов, свежей выпечки, праздничных тортов, горячих блюд и салатов в Кокшетау и Астане.
                 </p>
                 <div class="flex flex-wrap gap-4">
-                    <a href="#menu" class="bg-yellow-500 hover:bg-yellow-400 text-neutral-950 font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+                    <a href="#menu" class="bg-yellow-500 hover:bg-yellow-400 text-neutral-950 font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-1">
                         Смотреть меню &rarr;
                     </a>
-                    <a href="https://wa.me/77074328272" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all flex items-center gap-2">
+                    <a href="https://wa.me/77074328272" target="_blank" class="bg-emerald-600 hover:bg-emerald-500 text-white font-bold px-8 py-4 rounded-xl shadow-lg transition-all transform hover:-translate-y-1 flex items-center gap-2">
                         <i class="fa-brands fa-whatsapp text-xl"></i> Написать в WhatsApp
                     </a>
                 </div>
@@ -111,24 +125,24 @@
         <!-- Search Bar -->
         <div class="max-w-md mx-auto mb-8 relative">
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400"></i>
-            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюда (например: самса, манты, чак-чак)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-emerald-200 focus:outline-none focus:border-emerald-700 shadow-sm text-sm">
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюда (например: самса, манты, чак-чак)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-emerald-200 focus:outline-none focus:border-emerald-700 shadow-sm text-sm transition-all duration-300 focus:ring-2 focus:ring-emerald-700/20">
         </div>
 
         <!-- Category Filters -->
         <div id="categoryFilters" class="flex justify-center gap-2 mb-10 flex-wrap">
-            <button onclick="filterMenu('all')" id="btn-all" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md">Все</button>
-            <button onclick="filterMenu('semifinished')" id="btn-semifinished" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Полуфабрикаты</button>
-            <button onclick="filterMenu('baked')" id="btn-baked" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Выпечка</button>
-            <button onclick="filterMenu('sweet_pies')" id="btn-sweet_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Сладкие пироги</button>
-            <button onclick="filterMenu('meat_pies')" id="btn-meat_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Мясные пироги</button>
-            <button onclick="filterMenu('hot_dishes')" id="btn-hot_dishes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Горячие блюда</button>
-            <button onclick="filterMenu('salads')" id="btn-salads" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Салаты</button>
-            <button onclick="filterMenu('cakes')" id="btn-cakes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Торты</button>
-            <button onclick="filterMenu('pastries')" id="btn-pastries" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Пирожные</button>
-            <button onclick="filterMenu('rolls')" id="btn-rolls" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Рулеты</button>
-            <button onclick="filterMenu('trifles')" id="btn-trifles" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Трайфлы</button>
-            <button onclick="filterMenu('desserts')" id="btn-desserts" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Десерты</button>
-            <button onclick="filterMenu('sets')" id="btn-sets" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200">Сеты</button>
+            <button onclick="filterMenu('all')" id="btn-all" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md transform hover:scale-105">Все</button>
+            <button onclick="filterMenu('semifinished')" id="btn-semifinished" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Полуфабрикаты</button>
+            <button onclick="filterMenu('baked')" id="btn-baked" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Выпечка</button>
+            <button onclick="filterMenu('sweet_pies')" id="btn-sweet_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Сладкие пироги</button>
+            <button onclick="filterMenu('meat_pies')" id="btn-meat_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Мясные пироги</button>
+            <button onclick="filterMenu('hot_dishes')" id="btn-hot_dishes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Горячие блюда</button>
+            <button onclick="filterMenu('salads')" id="btn-salads" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Салаты</button>
+            <button onclick="filterMenu('cakes')" id="btn-cakes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Торты</button>
+            <button onclick="filterMenu('pastries')" id="btn-pastries" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Пирожные</button>
+            <button onclick="filterMenu('rolls')" id="btn-rolls" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Рулеты</button>
+            <button onclick="filterMenu('trifles')" id="btn-trifles" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Трайфлы</button>
+            <button onclick="filterMenu('desserts')" id="btn-desserts" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Десерты</button>
+            <button onclick="filterMenu('sets')" id="btn-sets" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Сеты</button>
         </div>
 
         <!-- Menu Grid -->
@@ -151,18 +165,18 @@
                         Наши мастера ежедневно выпекают свежую румяную самсу, готовят сочные полуфабрикаты и праздничные пироги для жителей Кокшетау и Астаны.
                     </p>
                     <div class="grid grid-cols-2 gap-4 text-center">
-                        <div class="bg-emerald-950/60 p-4 rounded-2xl border border-emerald-800">
+                        <div class="bg-emerald-950/60 p-4 rounded-2xl border border-emerald-800 transition-transform hover:scale-105">
                             <span class="text-2xl font-black text-amber-400 block">100%</span>
                             <span class="text-xs text-emerald-200">Свежие продукты</span>
                         </div>
-                        <div class="bg-emerald-950/60 p-4 rounded-2xl border border-emerald-800">
+                        <div class="bg-emerald-950/60 p-4 rounded-2xl border border-emerald-800 transition-transform hover:scale-105">
                             <span class="text-2xl font-black text-amber-400 block">2 Города</span>
                             <span class="text-xs text-emerald-200">Кокшетау и Астана</span>
                         </div>
                     </div>
                 </div>
                 <div class="flex justify-center">
-                    <img src="мади.png" alt="Madi Foods" class="w-72 h-72 rounded-full object-cover border-4 border-amber-400 shadow-2xl">
+                    <img src="мади.png" alt="Madi Foods" class="w-72 h-72 rounded-full object-cover border-4 border-amber-400 shadow-2xl transition-transform duration-500 hover:rotate-3">
                 </div>
             </div>
         </div>
@@ -176,8 +190,8 @@
         </div>
 
         <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center">
-                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 transition-transform hover:rotate-6">
                     <i class="fa-solid fa-truck-fast"></i>
                 </div>
                 <h3 class="font-bold text-lg text-emerald-950 mb-2">Условия доставки</h3>
@@ -185,8 +199,8 @@
                     Доставка курьером по Кокшетау и Астане с 08:00 до 21:00. Стоимость рассчитывается по тарифу курьерской службы.
                 </p>
             </div>
-            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center">
-                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 transition-transform hover:rotate-6">
                     <i class="fa-solid fa-store"></i>
                 </div>
                 <h3 class="font-bold text-lg text-emerald-950 mb-2">Самовывоз</h3>
@@ -194,8 +208,8 @@
                     Вы всегда можете забрать свой готовый заказ самостоятельно в наших фирменных точках в Кокшетау или Астане.
                 </p>
             </div>
-            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center">
-                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4 transition-transform hover:rotate-6">
                     <i class="fa-solid fa-qrcode"></i>
                 </div>
                 <h3 class="font-bold text-lg text-emerald-950 mb-2">Оплата через Kaspi</h3>
@@ -215,21 +229,21 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex text-amber-400 gap-1 mb-3 text-sm">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                     <p class="text-xs text-neutral-600 mb-4 italic">«Очень вкусная самса и чебуреки! Сочные, мяса много. Заказываем на всю семью в Астане постоянно!»</p>
-                    <span class="font-bold text-xs text-emerald-950 block">— Гульнара S.</span>
+                    <span class="font-bold text-xs text-emerald-950 block">— Gulnara S.</span>
                 </div>
-                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex text-amber-400 gap-1 mb-3 text-sm">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                     <p class="text-xs text-neutral-600 mb-4 italic">«Брали полуфабрикаты на праздник в Кокшетау. Все в восторге, гости думали, что всё лепили сами!»</p>
                     <span class="font-bold text-xs text-emerald-950 block">— Арман К.</span>
                 </div>
-                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex text-amber-400 gap-1 mb-3 text-sm">
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
@@ -240,8 +254,8 @@
         </div>
     </section>
 
-    <!-- Floating WhatsApp Button -->
-    <a href="https://wa.me/77074328272" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-all transform hover:scale-110">
+    <!-- Floating WhatsApp Button with Animation -->
+    <a href="https://wa.me/77074328272" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-all transform hover:scale-110 animate-pulse-whatsapp">
         <i class="fa-brands fa-whatsapp"></i>
     </a>
 
@@ -277,7 +291,7 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-emerald-900/60 pt-8 text-center text-xs text-emerald-300/60 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p>&copy; 2026 Madi Foods. Все права защищены.</p>
-            <p>Кулинария и полуфабрикаты в Кокшетау и Астане</p>
+            <p>Кулинария и пекарня в Кокшетау и Астане</p>
         </div>
     </footer>
 
@@ -332,7 +346,7 @@
 
             itemsToRender.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between";
+                card.className = "bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1.5";
                 card.innerHTML = `
                     <div class="relative overflow-hidden h-52 bg-emerald-50">
                         <img src="${item.image}" alt="${item.name}" 
@@ -349,7 +363,7 @@
                         </div>
                         <div class="flex items-center justify-between pt-4 border-t border-neutral-100 mt-2">
                             <span class="text-lg font-extrabold text-emerald-900">${item.price.toLocaleString()} ₸</span>
-                            <button onclick="addToCart(${item.id})" class="bg-emerald-100 hover:bg-emerald-700 text-emerald-950 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-colors flex items-center gap-1.5">
+                            <button onclick="addToCart(${item.id})" class="bg-emerald-100 hover:bg-emerald-700 text-emerald-950 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 transform active:scale-95 flex items-center gap-1.5 shadow-sm">
                                 <i class="fa-solid fa-plus"></i> В корзину
                             </button>
                         </div>
@@ -363,9 +377,9 @@
             currentCategory = category;
             document.getElementById('searchInput').value = '';
             document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200";
+                btn.className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105";
             });
-            document.getElementById(`btn-${category}`).className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md";
+            document.getElementById(`btn-${category}`).className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md transform hover:scale-105";
             
             const filtered = category === 'all' ? menuItems : menuItems.filter(item => item.category === category);
             renderMenu(filtered);
