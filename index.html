@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="ru">
+<html lang="ru" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Madi Foods - Кулинария и пекарня в Кокшетау и Астане</title>
+    <title>Madi Foods - Кулинария и полуфабрикаты в Кокшетау и Астане</title>
     <!-- Иконка сайта (Фавиконка) -->
     <link rel="icon" type="image/png" href="мади.png">
     <script src="https://cdn.tailwindcss.com"></script>
@@ -49,6 +49,8 @@
             <nav class="hidden lg:flex items-center gap-6 font-medium text-sm text-neutral-600">
                 <a href="#menu" class="hover:text-emerald-700 transition-colors">Меню</a>
                 <a href="#about" class="hover:text-emerald-700 transition-colors">О нас</a>
+                <a href="#delivery" class="hover:text-emerald-700 transition-colors">Доставка и оплата</a>
+                <a href="#reviews" class="hover:text-emerald-700 transition-colors">Отзывы</a>
                 <a href="#contacts" class="hover:text-emerald-700 transition-colors">Контакты</a>
             </nav>
 
@@ -101,9 +103,15 @@
 
     <!-- Menu Section -->
     <section id="menu" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 flex-grow w-full">
-        <div class="text-center max-w-xl mx-auto mb-12">
+        <div class="text-center max-w-xl mx-auto mb-8">
             <h2 class="text-3xl font-extrabold text-emerald-950 mb-3">Наше меню</h2>
-            <p class="text-neutral-600">Выберите категорию и добавьте понравившиеся блюда в корзину.</p>
+            <p class="text-neutral-600">Выберите категорию или найдите любимое блюдо через поиск.</p>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="max-w-md mx-auto mb-8 relative">
+            <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400"></i>
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюда (например: самса, манты, чак-чак)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-emerald-200 focus:outline-none focus:border-emerald-700 shadow-sm text-sm">
         </div>
 
         <!-- Category Filters -->
@@ -128,6 +136,114 @@
             <!-- Items rendered dynamically via JS -->
         </div>
     </section>
+
+    <!-- About Section -->
+    <section id="about" class="bg-emerald-900 text-white py-16 w-full">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
+                <div>
+                    <span class="text-amber-400 font-bold text-xs uppercase tracking-wider block mb-2">О нашей кулинарии</span>
+                    <h2 class="text-3xl font-extrabold mb-6 leading-snug">Готовим только из натуральных ингредиентов</h2>
+                    <p class="text-emerald-100 text-sm leading-relaxed mb-4">
+                        В <strong>Madi Foods</strong> мы придерживаемся главных семейных традиций: свежее отборное мясо, натуральное сливочное масло и традиционные рецепты.
+                    </p>
+                    <p class="text-emerald-100 text-sm leading-relaxed mb-6">
+                        Наши мастера ежедневно выпекают свежую румяную самсу, готовят сочные полуфабрикаты и праздничные пироги для жителей Кокшетау и Астаны.
+                    </p>
+                    <div class="grid grid-cols-2 gap-4 text-center">
+                        <div class="bg-emerald-950/60 p-4 rounded-2xl border border-emerald-800">
+                            <span class="text-2xl font-black text-amber-400 block">100%</span>
+                            <span class="text-xs text-emerald-200">Свежие продукты</span>
+                        </div>
+                        <div class="bg-emerald-950/60 p-4 rounded-2xl border border-emerald-800">
+                            <span class="text-2xl font-black text-amber-400 block">2 Города</span>
+                            <span class="text-xs text-emerald-200">Кокшетау и Астана</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex justify-center">
+                    <img src="мади.png" alt="Madi Foods" class="w-72 h-72 rounded-full object-cover border-4 border-amber-400 shadow-2xl">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Delivery & Payment Section -->
+    <section id="delivery" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 w-full">
+        <div class="text-center max-w-xl mx-auto mb-12">
+            <h2 class="text-3xl font-extrabold text-emerald-950 mb-3">Доставка и оплата</h2>
+            <p class="text-neutral-600">Быстро доставим горячие блюда и полуфабрикаты прямиком к вашему столу.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-truck-fast"></i>
+                </div>
+                <h3 class="font-bold text-lg text-emerald-950 mb-2">Условия доставки</h3>
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    Доставка курьером по Кокшетау и Астане с 08:00 до 21:00. Стоимость рассчитывается по тарифу курьерской службы.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-store"></i>
+                </div>
+                <h3 class="font-bold text-lg text-emerald-950 mb-2">Самовывоз</h3>
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    Вы всегда можете забрать свой готовый заказ самостоятельно в наших фирменных точках в Кокшетау или Астане.
+                </p>
+            </div>
+            <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm text-center">
+                <div class="w-14 h-14 bg-emerald-100 text-emerald-800 rounded-2xl flex items-center justify-center text-2xl mx-auto mb-4">
+                    <i class="fa-solid fa-qrcode"></i>
+                </div>
+                <h3 class="font-bold text-lg text-emerald-950 mb-2">Оплата через Kaspi</h3>
+                <p class="text-xs text-neutral-600 leading-relaxed">
+                    Принимаем удобную оплату через Kaspi QR или Kaspi Pay при оформлении заказа через WhatsApp.
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Customer Reviews Section -->
+    <section id="reviews" class="bg-emerald-50/50 py-16 w-full border-y border-emerald-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-xl mx-auto mb-12">
+                <h2 class="text-3xl font-extrabold text-emerald-950 mb-3">Отзывы наших гостей</h2>
+                <p class="text-neutral-600">Нам доверяют семейные обеды и праздничные застолья.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                    <div class="flex text-amber-400 gap-1 mb-3 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-neutral-600 mb-4 italic">«Очень вкусная самса и чебуреки! Сочные, мяса много. Заказываем на всю семью в Астане постоянно!»</p>
+                    <span class="font-bold text-xs text-emerald-950 block">— Гульнара S.</span>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                    <div class="flex text-amber-400 gap-1 mb-3 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-neutral-600 mb-4 italic">«Брали полуфабрикаты на праздник в Кокшетау. Все в восторге, гости думали, что всё лепили сами!»</p>
+                    <span class="font-bold text-xs text-emerald-950 block">— Арман К.</span>
+                </div>
+                <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm">
+                    <div class="flex text-amber-400 gap-1 mb-3 text-sm">
+                        <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
+                    </div>
+                    <p class="text-xs text-neutral-600 mb-4 italic">«Очень удобно заказывать прямо через сайт в WhatsApp! Чак-чак и баурсаки просто тают во рту.»</p>
+                    <span class="font-bold text-xs text-emerald-950 block">— Асель М.</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Floating WhatsApp Button -->
+    <a href="https://wa.me/77074328272" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-all transform hover:scale-110">
+        <i class="fa-brands fa-whatsapp"></i>
+    </a>
 
     <!-- Toast Notification -->
     <div id="toastNotification" class="fixed bottom-6 left-1/2 transform -translate-x-1/2 bg-emerald-900 text-white px-6 py-3 rounded-2xl shadow-2xl z-50 flex items-center gap-3 transition-all duration-300 opacity-0 translate-y-10 pointer-events-none">
@@ -161,7 +277,7 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-emerald-900/60 pt-8 text-center text-xs text-emerald-300/60 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p>&copy; 2026 Madi Foods. Все права защищены.</p>
-            <p>Кулинария и пекарня в Кокшетау и Астане</p>
+            <p>Кулинария и полуфабрикаты в Кокшетау и Астане</p>
         </div>
     </footer>
 
@@ -191,98 +307,30 @@
 
     <!-- JavaScript Data and Functions -->
     <script>
-        // Menu Items Database
         const menuItems = [
-            {
-                id: 1,
-                name: "Самса с говядиной",
-                category: "baked",
-                price: 350,
-                weight: "1 шт.",
-                desc: "Сочная начинка из отборной говядины с луком и специями в слоёном тесте.",
-                image: "01_samsa_govyadina.png"
-            },
-            {
-                id: 2,
-                name: "Самса с курицей",
-                category: "baked",
-                price: 300,
-                weight: "1 шт.",
-                desc: "Нежное куриное филе с пряными специями в хрустящей корочке.",
-                image: "02_samsa_kuritsa.png"
-            },
-            {
-                id: 3,
-                name: "Чебурек мини",
-                category: "semifinished",
-                price: 350,
-                weight: "1 шт.",
-                desc: "Аппетитные мини-чебуреки с сочным мясным фаршем.",
-                image: "03_cheburek_mini-1.png"
-            },
-            {
-                id: 4,
-                name: "Баурсаки домашние",
-                category: "baked",
-                price: 1900,
-                weight: "1 кг",
-                desc: "Традиционные пышные, воздушные и румяные баурсаки.",
-                image: "04_baursaki.png"
-            },
-            {
-                id: 5,
-                name: "Шелпек традиционный",
-                category: "baked",
-                price: 350,
-                weight: "1 шт.",
-                desc: "Тонкие, нежные и аппетитные традиционные лепёшки.",
-                image: "05_shelpek.png"
-            },
-            {
-                id: 6,
-                name: "Чак-чак медовый",
-                category: "desserts",
-                price: 5000,
-                weight: "1 кг",
-                desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма.",
-                image: "06_chak_chak-1.png"
-            },
-            {
-                id: 7,
-                name: "Булочки сдоба",
-                category: "baked",
-                price: 120,
-                weight: "1 шт.",
-                desc: "Мягкая, ароматная и пышная сдобная выпечка.",
-                image: "07_bulochki.png"
-            },
-            {
-                id: 8,
-                name: "Буйреки фирменные",
-                category: "meat_pies",
-                price: 5000,
-                weight: "1 кг",
-                desc: "Традиционные сочные пирожки с богатой мясной начинкой.",
-                image: "08_buyreki.png"
-            }
+            { id: 1, name: "Самса с говядиной", category: "baked", price: 350, weight: "1 шт.", desc: "Сочная начинка из отборной говядины с луком и специями в слоёном тесте.", image: "01_samsa_govyadina.png" },
+            { id: 2, name: "Самса с курицей", category: "baked", price: 300, weight: "1 шт.", desc: "Нежное куриное филе с пряными специями в хрустящей корочке.", image: "02_samsa_kuritsa.png" },
+            { id: 3, name: "Чебурек мини", category: "semifinished", price: 350, weight: "1 шт.", desc: "Аппетитные мини-чебуреки с сочным мясным фаршем.", image: "03_cheburek_mini-1.png" },
+            { id: 4, name: "Баурсаки домашние", category: "baked", price: 1900, weight: "1 кг", desc: "Традиционные пышные, воздушные и румяные баурсаки.", image: "04_baursaki.png" },
+            { id: 5, name: "Шелпек традиционный", category: "baked", price: 350, weight: "1 шт.", desc: "Тонкие, нежные и аппетитные традиционные лепёшки.", image: "05_shelpek.png" },
+            { id: 6, name: "Чак-чак медовый", category: "desserts", price: 5000, weight: "1 кг", desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма.", image: "06_chak_chak-1.png" },
+            { id: 7, name: "Булочки сдоба", category: "baked", price: 120, weight: "1 шт.", desc: "Мягкая, ароматная и пышная сдобная выпечка.", image: "07_bulochki.png" },
+            { id: 8, name: "Буйреки фирменные", category: "meat_pies", price: 5000, weight: "1 кг", desc: "Традиционные сочные пирожки с богатой мясной начинкой.", image: "08_buyreki.png" }
         ];
 
         let cart = [];
+        let currentCategory = 'all';
 
-        function renderMenu(category = 'all') {
+        function renderMenu(itemsToRender) {
             const container = document.getElementById('menuGrid');
             container.innerHTML = '';
 
-            const filteredItems = category === 'all' 
-                ? menuItems 
-                : menuItems.filter(item => item.category === category);
-
-            if (filteredItems.length === 0) {
-                container.innerHTML = '<div class="col-span-full text-center py-12 text-neutral-400">В этой категории скоро появятся новинки!</div>';
+            if (itemsToRender.length === 0) {
+                container.innerHTML = '<div class="col-span-full text-center py-12 text-neutral-400">Ничего не найдено</div>';
                 return;
             }
 
-            filteredItems.forEach(item => {
+            itemsToRender.forEach(item => {
                 const card = document.createElement('div');
                 card.className = "bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover:shadow-xl transition-all duration-300 flex flex-col justify-between";
                 card.innerHTML = `
@@ -312,11 +360,23 @@
         }
 
         function filterMenu(category) {
+            currentCategory = category;
+            document.getElementById('searchInput').value = '';
             document.querySelectorAll('.category-btn').forEach(btn => {
                 btn.className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200";
             });
             document.getElementById(`btn-${category}`).className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md";
-            renderMenu(category);
+            
+            const filtered = category === 'all' ? menuItems : menuItems.filter(item => item.category === category);
+            renderMenu(filtered);
+        }
+
+        function handleSearch() {
+            const query = document.getElementById('searchInput').value.toLowerCase();
+            const filtered = menuItems.filter(item => 
+                item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query)
+            );
+            renderMenu(filtered);
         }
 
         function addToCart(id) {
@@ -335,26 +395,19 @@
         function animateCartIcon() {
             const cartBtn = document.getElementById('cartBtn');
             cartBtn.classList.add('animate-bounce-short');
-            setTimeout(() => {
-                cartBtn.classList.remove('animate-bounce-short');
-            }, 300);
+            setTimeout(() => cartBtn.classList.remove('animate-bounce-short'), 300);
         }
 
         function showToast(text) {
             const toast = document.getElementById('toastNotification');
-            const toastText = document.getElementById('toastText');
-            toastText.innerText = text;
+            document.getElementById('toastText').innerText = text;
             toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-            
-            setTimeout(() => {
-                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
-            }, 2500);
+            setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'), 2500);
         }
 
         function updateCartUI() {
-            const countElem = document.getElementById('cartCount');
             const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            countElem.innerText = totalCount;
+            document.getElementById('cartCount').innerText = totalCount;
 
             const container = document.getElementById('cartItems');
             container.innerHTML = '';
@@ -391,8 +444,7 @@
         }
 
         function toggleCart() {
-            const modal = document.getElementById('cartModal');
-            modal.classList.toggle('hidden');
+            document.getElementById('cartModal').classList.toggle('hidden');
         }
 
         function checkoutWhatsApp() {
@@ -410,8 +462,7 @@
             window.open(`https://wa.me/77074328272?text=${message}`, '_blank');
         }
 
-        // Initialize Menu
-        renderMenu('all');
+        renderMenu(menuItems);
     </script>
 </body>
 </html>
