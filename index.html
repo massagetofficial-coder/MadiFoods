@@ -128,17 +128,18 @@
             <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюда (например: манты, самса, торт)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-emerald-200 focus:outline-none focus:border-emerald-700 shadow-sm text-sm transition-all duration-300 focus:ring-2 focus:ring-emerald-700/20">
         </div>
 
-       const categories = [
-            { id: "all", name: "Все" },
-            { id: "baked", name: "Выпечка" },
-            { id: "pies", name: "Пироги" },
-            { id: "hot_dishes", name: "Горячие блюда" },
-            { id: "drinks", name: "Напитки" },
-            { id: "salads", name: "Салаты" },
-            { id: "cakes", name: "Десерты" },
-            { id: "semifinished", name: "Полуфабрикаты" },
-            { id: "sets", name: "Сеты" }
-        ];
+       <div class="categories-container">
+    <button class="category-btn active" data-category="all">Все</button>
+    <button class="category-btn" data-category="baked">Выпечка</button>
+    <button class="category-btn" data-category="pies">Пироги</button>
+    <button class="category-btn" data-category="hot_dishes">Горячие блюда</button>
+    <!-- СЮДА НУЖНО ВСТАВИТЬ КНОПКУ НАПИТКОВ: -->
+    <button class="category-btn" data-category="drinks">Напитки</button>
+    <button class="category-btn" data-category="salads">Салаты</button>
+    <button class="category-btn" data-category="cakes">Десерты</button>
+    <button class="category-btn" data-category="semifinished">Полуфабрикаты</button>
+    <button class="category-btn" data-category="sets">Сеты</button>
+</div>
 
         <!-- Menu Grid -->
         <div id="menuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
