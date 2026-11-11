@@ -125,7 +125,7 @@
         <!-- Search Bar -->
         <div class="max-w-md mx-auto mb-8 relative">
             <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400"></i>
-            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюда (например: самса, манты, чак-чак)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-emerald-200 focus:outline-none focus:border-emerald-700 shadow-sm text-sm transition-all duration-300 focus:ring-2 focus:ring-emerald-700/20">
+            <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюда (например: манты, самса, торт)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-emerald-200 focus:outline-none focus:border-emerald-700 shadow-sm text-sm transition-all duration-300 focus:ring-2 focus:ring-emerald-700/20">
         </div>
 
         <!-- Category Filters -->
@@ -133,15 +133,10 @@
             <button onclick="filterMenu('all')" id="btn-all" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md transform hover:scale-105">Все</button>
             <button onclick="filterMenu('semifinished')" id="btn-semifinished" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Полуфабрикаты</button>
             <button onclick="filterMenu('baked')" id="btn-baked" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Выпечка</button>
-            <button onclick="filterMenu('sweet_pies')" id="btn-sweet_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Сладкие пироги</button>
-            <button onclick="filterMenu('meat_pies')" id="btn-meat_pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Мясные пироги</button>
-            <button onclick="filterMenu('hot_dishes')" id="btn-hot_dishes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Горячие блюда</button>
+            <button onclick="filterMenu('pies')" id="btn-pies" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Пироги</button>
+            <button onclick="filterMenu('cakes')" id="btn-cakes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Торты и десерты</button>
             <button onclick="filterMenu('salads')" id="btn-salads" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Салаты</button>
-            <button onclick="filterMenu('cakes')" id="btn-cakes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Торты</button>
-            <button onclick="filterMenu('pastries')" id="btn-pastries" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Пирожные</button>
-            <button onclick="filterMenu('rolls')" id="btn-rolls" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Рулеты</button>
-            <button onclick="filterMenu('trifles')" id="btn-trifles" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Трайфлы</button>
-            <button onclick="filterMenu('desserts')" id="btn-desserts" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Десерты</button>
+            <button onclick="filterMenu('hot_dishes')" id="btn-hot_dishes" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Горячие блюда</button>
             <button onclick="filterMenu('sets')" id="btn-sets" class="category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105">Сеты</button>
         </div>
 
@@ -162,7 +157,7 @@
                         В <strong>Madi Foods</strong> мы придерживаемся главных семейных традиций: свежее отборное мясо, натуральное сливочное масло и традиционные рецепты.
                     </p>
                     <p class="text-emerald-100 text-sm leading-relaxed mb-6">
-                        Наши мастера ежедневно выпекают свежую румяную самсу, готовят сочные полуфабрикаты и праздничные пироги для жителей Кокшетау и Астаны.
+                        Наши мастера ежедневно выпекают свежую румяную выпечку, готовят сочные полуфабрикаты, праздничные пироги и сеты для жителей Кокшетау и Астаны.
                     </p>
                     <div class="grid grid-cols-2 gap-4 text-center">
                         <div class="bg-emerald-950/60 p-4 rounded-2xl border border-emerald-800 transition-transform hover:scale-105">
@@ -234,7 +229,7 @@
                         <i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i><i class="fa-solid fa-star"></i>
                     </div>
                     <p class="text-xs text-neutral-600 mb-4 italic">«Очень вкусная самса и чебуреки! Сочные, мяса много. Заказываем на всю семью в Астане постоянно!»</p>
-                    <span class="font-bold text-xs text-emerald-950 block">— Gulnara S.</span>
+                    <span class="font-bold text-xs text-emerald-950 block">— Гульнара S.</span>
                 </div>
                 <div class="bg-white p-6 rounded-3xl border border-emerald-100 shadow-sm transition-all duration-300 hover:shadow-lg hover:-translate-y-1">
                     <div class="flex text-amber-400 gap-1 mb-3 text-sm">
@@ -291,7 +286,7 @@
         </div>
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 border-t border-emerald-900/60 pt-8 text-center text-xs text-emerald-300/60 flex flex-col sm:flex-row justify-between items-center gap-4">
             <p>&copy; 2026 Madi Foods. Все права защищены.</p>
-            <p>Кулинария и пекарня в Кокшетау и Астане</p>
+            <p>Кулинария и полуфабрикаты в Кокшетау и Астане</p>
         </div>
     </footer>
 
@@ -319,17 +314,69 @@
         </div>
     </div>
 
-    <!-- JavaScript Data and Functions -->
+    <!-- JavaScript Data and Functions (All 60 Items) -->
     <script>
         const menuItems = [
-            { id: 1, name: "Самса с говядиной", category: "baked", price: 350, weight: "1 шт.", desc: "Сочная начинка из отборной говядины с луком и специями в слоёном тесте.", image: "01_samsa_govyadina.png" },
-            { id: 2, name: "Самса с курицей", category: "baked", price: 300, weight: "1 шт.", desc: "Нежное куриное филе с пряными специями в хрустящей корочке.", image: "02_samsa_kuritsa.png" },
-            { id: 3, name: "Чебурек мини", category: "semifinished", price: 350, weight: "1 шт.", desc: "Аппетитные мини-чебуреки с сочным мясным фаршем.", image: "03_cheburek_mini-1.png" },
-            { id: 4, name: "Баурсаки домашние", category: "baked", price: 1900, weight: "1 кг", desc: "Традиционные пышные, воздушные и румяные баурсаки.", image: "04_baursaki.png" },
-            { id: 5, name: "Шелпек традиционный", category: "baked", price: 350, weight: "1 шт.", desc: "Тонкие, нежные и аппетитные традиционные лепёшки.", image: "05_shelpek.png" },
-            { id: 6, name: "Чак-чак медовый", category: "desserts", price: 5000, weight: "1 кг", desc: "Натуральный хрустящий медовый чак-чак с добавлением изюма.", image: "06_chak_chak-1.png" },
-            { id: 7, name: "Булочки сдоба", category: "baked", price: 120, weight: "1 шт.", desc: "Мягкая, ароматная и пышная сдобная выпечка.", image: "07_bulochki.png" },
-            { id: 8, name: "Буйреки фирменные", category: "meat_pies", price: 5000, weight: "1 кг", desc: "Традиционные сочные пирожки с богатой мясной начинкой.", image: "08_buyreki.png" }
+            { id: 1, name: "Капкейки", category: "cakes", price: 600, weight: "1 шт.", desc: "Нежные домашние капкейки со свежими ягодами и кремом.", image: "капкейки 600тг 1 шт.jpg" },
+            { id: 2, name: "Картофель запеченный", category: "hot_dishes", price: 2500, weight: "1 кг", desc: "Ароматный запеченный картофель с золотистой корочкой и специями.", image: "картофель запеченый 1кг 2500тг.jpg" },
+            { id: 3, name: "Киш с курицей и грибами", category: "pies", price: 5000, weight: "1 шт.", desc: "Сочный открытый пирог с нежным куриным филе и шампиньонами.", image: "киш с кур и гриб 1шт 5000тг.jpg" },
+            { id: 4, name: "Баурсаки", category: "baked", price: 1900, weight: "1 кг", desc: "Традиционные пышные, воздушные и румяные домашние баурсаки.", image: "баурсаки 1900тг 1 кг.jpg" },
+            { id: 5, name: "Боноффи пай", category: "cakes", price: 700, weight: "1 шт.", desc: "Популярный десерт с карамелью, бананами и нежным кремом.", image: "боноффи пай 1шт 700тг.jpg" },
+            { id: 6, name: "Винегрет", category: "salads", price: 4000, weight: "1 кг", desc: "Традиционный овощной салат с заправкой.", image: "винегрет 1кг 4000тг.jpg" },
+            { id: 7, name: "Вуппи пай", category: "cakes", price: 600, weight: "1 шт.", desc: "Знаменитое шоколадное пирожное с воздушной кремовой начинкой.", image: "вуппипай 1шт 600тг.jpg" },
+            { id: 8, name: "Голень запечённая", category: "hot_dishes", price: 8000, weight: "1 кг", desc: "Аппетитные куриные голени в ароматных специях.", image: "Голень запечённая 1 кг 8000.jpg" },
+            { id: 9, name: "Горбуша запеченная с овощами", category: "hot_dishes", price: 16000, weight: "1 шт.", desc: "Праздничное блюдо из нежной горбуши с овощным ассорти.", image: "горбуша запеч с овощ 16000тг.jpg" },
+            { id: 10, name: "Салат «Греческий»", category: "salads", price: 3500, weight: "1 кг", desc: "Свежие овощи, сыр фета, оливки и фирмовая заправка.", image: "греческий 3500тг 1 кг.jpg" },
+            { id: 11, name: "Трайфл «Красный бархат»", category: "cakes", price: 900, weight: "1 шт.", desc: "Изысканный десерт в стаканчике со сливочным кремом.", image: "крас бархат 1шт 900тг.jpg" },
+            { id: 12, name: "Торт «Красный бархат»", category: "cakes", price: 5500, weight: "1 шт.", desc: "Фирменный праздничный торт с нежными бисквитными коржами.", image: "красн бархат 5500тг.jpg" },
+            { id: 13, name: "Манты", category: "semifinished", price: 280, weight: "1 шт.", desc: "Сочные домашние манты из отборного мяса.", image: "манты 1 шт 280тг.jpg" },
+            { id: 14, name: "Микс пирогов", category: "pies", price: 5000, weight: "1 шт.", desc: "Ассорти из лучших видов домашних пирогов.", image: "Микс пироги 5000 тг.jpg" },
+            { id: 15, name: "Мини-баурсаки с балкаймаком", category: "baked", price: 2300, weight: "1 кг", desc: "Нежнейшие мини-баурсаки, подаваемые с традиционным балкаймаком.", image: "Мини баурсаки с Балкаймак 1 кг 2300.jpg" },
+            { id: 16, name: "Салат «Морковь по-корейски»", category: "salads", price: 3000, weight: "1 кг", desc: "Пряная и хрустящая корейская морковка.", image: "морк по корей 1 кг 3000тг.jpg" },
+            { id: 17, name: "Пирожное «Муравейник»", category: "cakes", price: 500, weight: "1 шт.", desc: "Любимое сладкое лакомство из рассыпчатого печенья с вареной сгущенкой.", image: "муравейник 1шт 500тг.jpg" },
+            { id: 18, name: "Котлеты куриные", category: "semifinished", price: 6000, weight: "1 кг", desc: "Домашние полуфабрикаты из нежного куриного фарша в панировке.", image: "Котлеты курица 6000 кг.jpg" },
+            { id: 19, name: "Салат «Крабовый»", category: "salads", price: 4500, weight: "1 кг", desc: "Классический праздничный салат с крабовыми палочками и кукурузой.", image: "крабовый 1кг 4500тг.jpg" },
+            { id: 20, name: "Пирожное «Красный бархат»", category: "cakes", price: 600, weight: "1 шт.", desc: "Порционное пирожное с характерным бисквитом.", image: "крас бархат 1шт 600тг.jpg" },
+            { id: 21, name: "Пирог «Сметанник»", category: "pies", price: 4000, weight: "1 шт.", desc: "Нежный песочный пирог с ароматной сметанной заливкой.", image: "пирог сметанник 4000тг.jpg" },
+            { id: 22, name: "Пирог творожно-малиновый", category: "pies", price: 5500, weight: "1 шт.", desc: "Изысканное сочетание творожной начинки и яркой малины.", image: "Пирог творожно Малиновый 5500 тг.jpg" },
+            { id: 23, name: "Пирог творожный", category: "pies", price: 4000, weight: "1 шт.", desc: "Классический домашний творожный пирог.", image: "пирог творожный 4000тг.jpg" },
+            { id: 24, name: "Пирог «Боноффи пай»", category: "pies", price: 5000, weight: "1 шт.", desc: "Большой пирог с карамелью и бананами.", image: "пирог боноффи пай 5000тг.jpg" },
+            { id: 25, name: "Пирог «Восточный»", category: "pies", price: 4800, weight: "1 шт.", desc: "Пирог с восточными сухофруктами и орехами.", image: "пирог восточный 4800тг.jpg" },
+            { id: 26, name: "Пирог карамельный", category: "pies", price: 4500, weight: "1 шт.", desc: "Сладкий пирог с насыщенным карамельным вкусом.", image: "пирог карамель 4500тг.jpg" },
+            { id: 27, name: "Пирог маково-меренговый", category: "pies", price: 6000, weight: "1 шт.", desc: "Изысканный пирог с маковой начинкой и воздушной меренгой.", image: "Пирог Маково Меренговый 6000 тг.jpg" },
+            { id: 28, name: "Пирог с курагой", category: "pies", price: 4000, weight: "1 шт.", desc: "Сладкий и полезный пирог с начинкой из спелой кураги.", image: "пирог с курагой 4000тг.jpg" },
+            { id: 29, name: "Пирог с курицей и говядиной", category: "pies", price: 4500, weight: "1 кг", desc: "Сытный мясной пирог (с курицей — 4000 ₸, с говядиной — 4500 ₸).", image: "пирог с куриц 4000тг и с гов 4500тг 1кг.jpg" },
+            { id: 30, name: "Пирог с черносливом", category: "pies", price: 4000, weight: "1 шт.", desc: "Ароматный пирог с добавлением пикантного чернослива.", image: "пирог с чернослив 4000тг.jpg" },
+            { id: 31, name: "Сет №1", category: "sets", price: 23500, weight: "1 сет", desc: "Большой праздничный сет из лучших блюд и выпечки.", image: "Сет #1  23500тг.jpg" },
+            { id: 32, name: "Сет №2", category: "sets", price: 21300, weight: "1 сет", desc: "Сбалансированный ассорти-сет для всей семьи.", image: "Сет #2 Рассчитан 21300тг.jpg" },
+            { id: 33, name: "Сет №3", category: "sets", price: 15100, weight: "1 сет", desc: "Уютный сет выпечки и десертов к чаю.", image: "Сет #3 15100тг.jpg" },
+            { id: 34, name: "Сет №4", category: "sets", price: 13200, weight: "1 сет", desc: "Компактный набор домашних угощений.", image: "Сет #4 13200тг.jpg" },
+            { id: 35, name: "Сет №5", category: "sets", price: 16600, weight: "1 сет", desc: "Вкусный подарочный набор для гостей.", image: "Сет #5 16600тг.jpg" },
+            { id: 36, name: "Сет №6", category: "sets", price: 10600, weight: "1 сет", desc: "Небольшой сытный сет по отличной цене.", image: "Сет #6 10600тг.jpg" },
+            { id: 37, name: "Рулеты из баклажан", category: "semifinished", price: 400, weight: "1 шт.", desc: "Пикантные рулетики из баклажан с начинкой.", image: "Рулеты из баклажан 400 тг шт.jpg" },
+            { id: 38, name: "Салат «Генеральский»", category: "salads", price: 5500, weight: "1 кг", desc: "Изысканный многослойный салат с грибами и мясом.", image: "салат генеральский 1кг 5500тг.jpg" },
+            { id: 39, name: "Свекольный салат", category: "salads", price: 3500, weight: "1 кг", desc: "Полезный салат из отборной свеклы с грецкими орехами.", image: "свекольный 3500тг 1кг.jpg" },
+            { id: 40, name: "Салат «Сельдь под шубой»", category: "salads", price: 5500, weight: "1 кг", desc: "Классический праздничный салат с сельдью и овощами.", image: "сельд под шуб 5500тг 1 кг.jpg" },
+            { id: 41, name: "Цыплята табака", category: "hot_dishes", price: 10000, weight: "1 шт.", desc: "Сочные цыплята табака с золотистой корочкой и картофелем.", image: "цыплята табака 10000тг.jpg" },
+            { id: 42, name: "Чайный набор", category: "baked", price: 6000, weight: "1 кг", desc: "Ассорти домашних сладостей и выпечки к чаю.", image: "чайный набор 1 кг 6000тг.jpg" },
+            { id: 43, name: "Чак-чак", category: "cakes", price: 400, weight: "1 шт.", desc: "Порционный медовый чак-чак в индивидуальной упаковке.", image: "чак чак 1шт 400тг.jpg" },
+            { id: 44, name: "Трайфл «Сникерс»", category: "cakes", price: 1200, weight: "1 шт.", desc: "Шоколадный десерт с карамелью, арахисом и кремом.", image: "сникерс 1200 тг 1шт.jpg" },
+            { id: 45, name: "Тарталетка ягодная", category: "cakes", price: 600, weight: "1 шт.", desc: "Песочная тарталетка с кремом и свежими фруктами.", image: "Тарталетка ягодная 600 тг.jpg" },
+            { id: 46, name: "Салат «Тбилиси»", category: "salads", price: 6000, weight: "1 кг", desc: "Пряный грузинский салат с фасолью, мясом и грецким орехом.", image: "тбилиси 6000тг 1 кг.jpg" },
+            { id: 47, name: "Трайфл фисташковый", category: "cakes", price: 1200, weight: "1 шт.", desc: "Нежный десерт с фисташковым бисквитом и ягодами.", image: "фисташковый 1200тг 1 шт.jpg" },
+            { id: 48, name: "Фисташковый сметанник", category: "pies", price: 4800, weight: "1 шт.", desc: "Оригинальный пирог с фисташковым вкусом.", image: "Фисташковый Сметанник 4800 тг.jpg" },
+            { id: 49, name: "Фунчоза", category: "salads", price: 3500, weight: "1 кг", desc: "Азиатская стеклянная лапша с овощами и заправкой.", image: "фунчеза 1кг 3500тг.jpg" },
+            { id: 50, name: "Салат «Цезарь»", category: "salads", price: 5500, weight: "1 кг", desc: "Популярный салат с куриным филе, сухариками, сыром и соусом.", image: "цезарь 5500 тг 1 кг.jpg" },
+            { id: 51, name: "Сет «Семейный»", category: "sets", price: 15600, weight: "1 сет", desc: "Специальный семейный сет для уютного вечера.", image: "сет семейный 15600 тг.jpg" },
+            { id: 52, name: "Шоколадный сметанник", category: "pies", price: 4800, weight: "1 шт.", desc: "Насыщенный шоколадный пирог со сметанным кремом.", image: "Сметанник шоколадный 4800 тг.jpg" },
+            { id: 53, name: "Шарлотка", category: "pies", price: 4000, weight: "1 шт.", desc: "Классический воздушный пирог со свежими яблоками.", image: "шарлотка 4000тг.jpg" },
+            { id: 54, name: "Яблочный с меренгой", category: "pies", price: 5000, weight: "1 шт.", desc: "Нежный яблочный пирог под шапкой из опаленной меренги.", image: "яблочный с меренгой 5000тг 1шт.jpg" },
+            { id: 55, name: "Киш с семгой и брокколи", category: "pies", price: 6000, weight: "1 шт.", desc: "Изысканный французский киш с благородной рыбой и овощами.", image: "киш с семга и брокалли 6000тг 1 шт.jpg" },
+            { id: 56, name: "Компот домашний", category: "hot_dishes", price: 800, weight: "1 л", desc: "Освежающий натуральный компот собственного приготовления.", image: "компот 1л 800 тг.jpg" },
+            { id: 57, name: "Салат «Нежный»", category: "salads", price: 4500, weight: "1 кг", desc: "Легкий и мягкий салат из отборных ингредиентов.", image: "нежный 4500тг 1 кг.jpg" },
+            { id: 58, name: "Салат «Оливье»", category: "salads", price: 4500, weight: "1 кг", desc: "Любимый традиционный новогодний и праздничный салат.", image: "оливье 4500тг 1кг.jpg" },
+            { id: 59, name: "Пирожное медовое", category: "cakes", price: 700, weight: "1 шт.", desc: "Порционное медовое пирожное с кремом и ягодами.", image: "пирожное медовое 1шт 700тг.jpg" },
+            { id: 60, name: "Рулет меренговый", category: "cakes", price: 8000, weight: "1 кг", desc: "Воздушный меренговый рулет со сливочным кремом и ягодами.", image: "Рулет Меренговый 8000 кг.jpg" }
         ];
 
         let cart = [];
