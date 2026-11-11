@@ -128,18 +128,18 @@
             <input type="text" id="searchInput" oninput="handleSearch()" placeholder="Поиск блюда (например: манты, самса, торт)..." class="w-full pl-11 pr-4 py-3 rounded-2xl border border-emerald-200 focus:outline-none focus:border-emerald-700 shadow-sm text-sm transition-all duration-300 focus:ring-2 focus:ring-emerald-700/20">
         </div>
 
-       <div class="categories-container">
-    <button class="category-btn active" data-category="all">Все</button>
-    <button class="category-btn" data-category="baked">Выпечка</button>
-    <button class="category-btn" data-category="pies">Пироги</button>
-    <button class="category-btn" data-category="hot_dishes">Горячие блюда</button>
-    <!-- СЮДА НУЖНО ВСТАВИТЬ КНОПКУ НАПИТКОВ: -->
-    <button class="category-btn" data-category="drinks">Напитки</button>
-    <button class="category-btn" data-category="salads">Салаты</button>
-    <button class="category-btn" data-category="cakes">Десерты</button>
-    <button class="category-btn" data-category="semifinished">Полуфабрикаты</button>
-    <button class="category-btn" data-category="sets">Сеты</button>
-</div>
+        <!-- Categories Filter Buttons -->
+        <div id="categoryButtons" class="flex flex-wrap justify-center gap-2 mb-12">
+            <button onclick="filterCategory('all')" class="category-btn active px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-emerald-700 text-white shadow-md" data-category="all">Все</button>
+            <button onclick="filterCategory('baked')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="baked">Выпечка</button>
+            <button onclick="filterCategory('pies')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="pies">Пироги</button>
+            <button onclick="filterCategory('hot_dishes')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="hot_dishes">Горячие блюда</button>
+            <button onclick="filterCategory('drinks')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="drinks">Напитки</button>
+            <button onclick="filterCategory('salads')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="salads">Салаты</button>
+            <button onclick="filterCategory('cakes')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="cakes">Десерты</button>
+            <button onclick="filterCategory('semifinished')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="semifinished">Полуфабрикаты</button>
+            <button onclick="filterCategory('sets')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="sets">Сеты</button>
+        </div>
 
         <!-- Menu Grid -->
         <div id="menuGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
@@ -315,9 +315,10 @@
         </div>
     </div>
 
-    <!-- JavaScript Data and Functions (All 60 Items) -->
+    <!-- JavaScript Data and Functions -->
     <script>
-const menuItems = [
+        // Список товаров меню
+        const menuItems = [
             { id: 1, name: "Самса с говядиной", category: "baked", price: 350, weight: "1 шт.", desc: "Сочная начинка из отборной говядины с луком и специями в слоёном тесте.", image: "01_samsa_govyadina.png" },
             { id: 2, name: "Самса с курицей", category: "baked", price: 300, weight: "1 шт.", desc: "Нежное куриное филе с пряными специями в хрустящей корочке.", image: "02_samsa_kuritsa.png" },
             { id: 3, name: "Чебурек мини", category: "baked", price: 350, weight: "1 шт.", desc: "Аппетитные мини-чебуреки с сочным мясным фаршем.", image: "03_cheburek_mini-1.png" },
@@ -385,152 +386,172 @@ const menuItems = [
             { id: 65, name: "Пирожное медовое", category: "cakes", price: 700, weight: "1 шт.", desc: "Порционное медовое пирожное с кремом и ягодами.", image: "пирожное медовое 1шт 700тг.jpg" },
             { id: 66, name: "Рулет меренговый", category: "cakes", price: 8000, weight: "1 кг", desc: "Воздушный меренговый рулет со сливочным кремом и ягодами.", image: "Рулет Меренговый 8000 кг.jpg" }
         ];
-        
-        let cart = [];
+
         let currentCategory = 'all';
+        let searchQuery = '';
+        let cart = [];
 
-        function renderMenu(itemsToRender) {
-            const container = document.getElementById('menuGrid');
-            container.innerHTML = '';
+        // Рендер карточек меню
+        function renderMenu() {
+            const grid = document.getElementById('menuGrid');
+            grid.innerHTML = '';
 
-            if (itemsToRender.length === 0) {
-                container.innerHTML = '<div class="col-span-full text-center py-12 text-neutral-400">Ничего не найдено</div>';
+            const filtered = menuItems.filter(item => {
+                const matchesCategory = currentCategory === 'all' || item.category === currentCategory;
+                const matchesSearch = item.name.toLowerCase().includes(searchQuery.toLowerCase()) || item.desc.toLowerCase().includes(searchQuery.toLowerCase());
+                return matchesCategory && matchesSearch;
+            });
+
+            if (filtered.length === 0) {
+                grid.innerHTML = `<div class="col-span-full text-center py-12 text-neutral-500 font-medium">Ничего не найдено по вашему запросу.</div>`;
                 return;
             }
 
-            itemsToRender.forEach(item => {
+            filtered.forEach(item => {
                 const card = document.createElement('div');
-                card.className = "bg-white rounded-3xl overflow-hidden border border-emerald-100 shadow-sm hover:shadow-2xl transition-all duration-300 flex flex-col justify-between transform hover:-translate-y-1.5";
+                card.className = "bg-white rounded-3xl border border-emerald-100 shadow-sm overflow-hidden flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1";
                 card.innerHTML = `
-                    <div class="relative overflow-hidden h-52 bg-emerald-50">
-                        <img src="${item.image}" alt="${item.name}" 
-                             class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
-                             onerror="this.src='https://placehold.co/600x400/065f46/ffffff?text=${encodeURIComponent(item.name)}'">
-                        <span class="absolute top-3 right-3 bg-white/95 backdrop-blur-sm text-emerald-950 text-xs font-bold px-3 py-1 rounded-full shadow-md">
-                            ${item.weight}
-                        </span>
+                    <div>
+                        <div class="h-48 overflow-hidden relative bg-neutral-100">
+                            <img src="${item.image}" alt="${item.name}" class="w-full h-full object-cover transition-transform duration-500 hover:scale-105" onerror="this.src='мади.png'">
+                            <span class="absolute top-3 right-3 bg-white/90 backdrop-blur-md text-emerald-900 text-xs font-bold px-3 py-1 rounded-full shadow-sm">
+                                ${item.weight}
+                            </span>
+                        </div>
+                        <div class="p-5">
+                            <h3 class="font-bold text-lg text-emerald-950 mb-2">${item.name}</h3>
+                            <p class="text-xs text-neutral-600 line-clamp-2 leading-relaxed mb-4">${item.desc}</p>
+                        </div>
                     </div>
-                    <div class="p-6 flex flex-col flex-grow justify-between">
-                        <div>
-                            <h3 class="text-lg font-bold text-neutral-900 mb-1">${item.name}</h3>
-                            <p class="text-xs text-neutral-500 mb-4 line-clamp-2">${item.desc}</p>
-                        </div>
-                        <div class="flex items-center justify-between pt-4 border-t border-neutral-100 mt-2">
-                            <span class="text-lg font-extrabold text-emerald-900">${item.price.toLocaleString()} ₸</span>
-                            <button onclick="addToCart(${item.id})" class="bg-emerald-100 hover:bg-emerald-700 text-emerald-950 hover:text-white px-4 py-2 rounded-xl text-xs font-bold transition-all duration-300 transform active:scale-95 flex items-center gap-1.5 shadow-sm">
-                                <i class="fa-solid fa-plus"></i> В корзину
-                            </button>
-                        </div>
+                    <div class="p-5 pt-0 flex items-center justify-between border-t border-neutral-100 mt-2">
+                        <span class="text-lg font-extrabold text-emerald-900">${item.price.toLocaleString()} ₸</span>
+                        <button onclick="addToCart(${item.id})" class="bg-emerald-50 hover:bg-emerald-700 text-emerald-800 hover:text-white px-4 py-2.5 rounded-xl font-semibold text-xs transition-all flex items-center gap-1.5 shadow-sm">
+                            <i class="fa-solid fa-plus"></i> В корзину
+                        </button>
                     </div>
                 `;
-                container.appendChild(card);
+                grid.appendChild(card);
             });
         }
 
-        function filterMenu(category) {
+        // Фильтрация по категории
+        function filterCategory(category) {
             currentCategory = category;
-            document.getElementById('searchInput').value = '';
             document.querySelectorAll('.category-btn').forEach(btn => {
-                btn.className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-200 transform hover:scale-105";
+                if (btn.getAttribute('data-category') === category) {
+                    btn.className = "category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-emerald-700 text-white shadow-md";
+                } else {
+                    btn.className = "category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm";
+                }
             });
-            document.getElementById(`btn-${category}`).className = "category-btn px-5 py-2 rounded-full font-semibold text-xs sm:text-sm transition-all bg-emerald-900 text-white shadow-md transform hover:scale-105";
-            
-            const filtered = category === 'all' ? menuItems : menuItems.filter(item => item.category === category);
-            renderMenu(filtered);
+            renderMenu();
         }
 
+        // Поиск по сайту
         function handleSearch() {
-            const query = document.getElementById('searchInput').value.toLowerCase();
-            const filtered = menuItems.filter(item => 
-                item.name.toLowerCase().includes(query) || item.desc.toLowerCase().includes(query)
-            );
-            renderMenu(filtered);
+            searchQuery = document.getElementById('searchInput').value;
+            renderMenu();
+        }
+
+        // Корзина
+        function toggleCart() {
+            const modal = document.getElementById('cartModal');
+            modal.classList.toggle('hidden');
+            renderCart();
         }
 
         function addToCart(id) {
             const item = menuItems.find(i => i.id === id);
             const existing = cart.find(i => i.id === id);
             if (existing) {
-                existing.quantity += 1;
+                existing.qty++;
             } else {
-                cart.push({ ...item, quantity: 1 });
+                cart.push({ ...item, qty: 1 });
             }
-            updateCartUI();
-            showToast(`«${item.name}» добавлено в корзину!`);
-            animateCartIcon();
+            updateCartCount();
+            showToast(`Товар "${item.name}" добавлен в корзину!`);
         }
 
-        function animateCartIcon() {
-            const cartBtn = document.getElementById('cartBtn');
-            cartBtn.classList.add('animate-bounce-short');
-            setTimeout(() => cartBtn.classList.remove('animate-bounce-short'), 300);
+        function changeQty(id, delta) {
+            const item = cart.find(i => i.id === id);
+            if (item) {
+                item.qty += delta;
+                if (item.qty <= 0) {
+                    cart = cart.filter(i => i.id !== id);
+                }
+            }
+            renderCart();
+            updateCartCount();
         }
 
-        function showToast(text) {
-            const toast = document.getElementById('toastNotification');
-            document.getElementById('toastText').innerText = text;
-            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
-            setTimeout(() => toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none'), 2500);
+        function updateCartCount() {
+            const count = cart.reduce((sum, i) => sum + i.qty, 0);
+            document.getElementById('cartCount').innerText = count;
         }
 
-        function updateCartUI() {
-            const totalCount = cart.reduce((sum, item) => sum + item.quantity, 0);
-            document.getElementById('cartCount').innerText = totalCount;
-
+        function renderCart() {
             const container = document.getElementById('cartItems');
             container.innerHTML = '';
-
             if (cart.length === 0) {
-                container.innerHTML = '<p class="text-neutral-400 text-center py-8 text-sm">Корзина пуста</p>';
+                container.innerHTML = `<p class="text-center text-neutral-400 py-8 text-sm">Ваша корзина пуста</p>`;
                 document.getElementById('cartTotal').innerText = '0 ₸';
                 return;
             }
 
             let total = 0;
             cart.forEach(item => {
-                total += item.price * item.quantity;
-                const row = document.createElement('div');
-                row.className = "py-3 flex items-center justify-between";
-                row.innerHTML = `
+                total += item.price * item.qty;
+                const div = document.createElement('div');
+                div.className = "py-3 flex items-center justify-between";
+                div.innerHTML = `
                     <div>
-                        <h4 class="text-sm font-bold text-neutral-800">${item.name}</h4>
-                        <span class="text-xs text-neutral-500">${item.price.toLocaleString()} ₸ x ${item.quantity}</span>
+                        <h4 class="font-bold text-sm text-neutral-900">${item.name}</h4>
+                        <span class="text-xs text-neutral-500">${item.price.toLocaleString()} ₸ × ${item.qty}</span>
                     </div>
                     <div class="flex items-center gap-3">
-                        <span class="text-sm font-bold text-emerald-900">${(item.price * item.quantity).toLocaleString()} ₸</span>
-                        <button onclick="removeFromCart(${item.id})" class="text-red-500 hover:text-red-700 text-xs px-2 py-1"><i class="fa-solid fa-trash"></i></button>
+                        <div class="flex items-center border border-neutral-200 rounded-lg overflow-hidden">
+                            <button onclick="changeQty(${item.id}, -1)" class="px-2.5 py-1 bg-neutral-50 hover:bg-neutral-200 text-neutral-700 text-xs font-bold">-</button>
+                            <span class="px-3 text-xs font-semibold">${item.qty}</span>
+                            <button onclick="changeQty(${item.id}, 1)" class="px-2.5 py-1 bg-neutral-50 hover:bg-neutral-200 text-neutral-700 text-xs font-bold">+</button>
+                        </div>
+                        <span class="font-bold text-sm text-emerald-900 w-20 text-right">${(item.price * item.qty).toLocaleString()} ₸</span>
                     </div>
                 `;
-                container.appendChild(row);
+                container.appendChild(div);
             });
             document.getElementById('cartTotal').innerText = total.toLocaleString() + ' ₸';
         }
 
-        function removeFromCart(id) {
-            cart = cart.filter(item => item.id !== id);
-            updateCartUI();
-        }
-
-        function toggleCart() {
-            document.getElementById('cartModal').classList.toggle('hidden');
-        }
-
         function checkoutWhatsApp() {
             if (cart.length === 0) {
-                alert('Корзина пуста!');
+                alert('Ваша корзина пуста!');
                 return;
             }
-            let message = "Здравствуйте! Хочу сделать заказ в Madi Foods:%0A";
+            let text = "Здравствуйте! Хочу сделать заказ в Madi Foods:\n\n";
             let total = 0;
-            cart.forEach(item => {
-                message += `- ${item.name} (${item.weight}) x ${item.quantity} = ${(item.price * item.quantity).toLocaleString()} ₸%0A`;
-                total += item.price * item.quantity;
+            cart.forEach(i => {
+                text += `• ${i.name} (${i.weight}) — ${i.qty} шт. по ${i.price} ₸ = ${(i.price * i.qty).toLocaleString()} ₸\n`;
+                total += i.price * i.qty;
             });
-            message += `%0A*Итого к оплате: ${total.toLocaleString()} ₸*`;
-            window.open(`https://wa.me/77074328272?text=${message}`, '_blank');
+            text += `\nИтого к оплате: ${total.toLocaleString()} ₸\n\nЖду подтверждения заказа!`;
+            const url = `https://wa.me/77074328272?text=${encodeURIComponent(text)}`;
+            window.open(url, '_blank');
         }
 
-        renderMenu(menuItems);
+        function showToast(msg) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastText').innerText = msg;
+            toast.classList.remove('opacity-0', 'translate-y-10', 'pointer-events-none');
+            setTimeout(() => {
+                toast.classList.add('opacity-0', 'translate-y-10', 'pointer-events-none');
+            }, 3000);
+        }
+
+        // Инициализация при загрузке страницы
+        window.onload = function() {
+            renderMenu();
+        };
     </script>
+
 </body>
 </html>
