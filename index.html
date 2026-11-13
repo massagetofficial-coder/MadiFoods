@@ -132,7 +132,8 @@
         <div id="categoryButtons" class="flex flex-wrap justify-center gap-2 mb-12">
             <button onclick="filterCategory('all')" class="category-btn active px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-emerald-700 text-white shadow-md" data-category="all">Все</button>
             <button onclick="filterCategory('baked')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="baked">Выпечка</button>
-            <button onclick="filterCategory('pies')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="pies">Пироги</button>
+            <button onclick="filterCategory('sweet_pies')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="sweet_pies">Сладкие пироги</button>
+            <button onclick="filterCategory('savory_pies')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="savory_pies">Обычные пироги</button>
             <button onclick="filterCategory('hot_dishes')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="hot_dishes">Горячие блюда</button>
             <button onclick="filterCategory('drinks')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="drinks">Напитки</button>
             <button onclick="filterCategory('salads')" class="category-btn px-5 py-2.5 rounded-xl font-semibold text-sm transition-all bg-white text-neutral-600 hover:bg-emerald-100 border border-emerald-100 shadow-sm" data-category="salads">Салаты</button>
@@ -250,6 +251,36 @@
         </div>
     </section>
 
+    <!-- Modal for Meat Pie Selection -->
+    <div id="pieModal" class="fixed inset-0 z-50 bg-black/50 backdrop-blur-sm hidden flex items-center justify-center p-4">
+        <div class="bg-white w-full max-w-sm rounded-3xl shadow-2xl p-6 relative">
+            <button onclick="closePieModal()" class="absolute top-4 right-4 text-neutral-400 hover:text-neutral-600 text-xl font-bold">&times;</button>
+            <h3 class="text-xl font-bold text-emerald-950 mb-2">Выберите начинку пирога</h3>
+            <p class="text-xs text-neutral-600 mb-4">Пирог с курицей и говядиной</p>
+            
+            <div class="space-y-3 mb-6">
+                <label class="flex items-center justify-between p-3 rounded-2xl border border-emerald-200 cursor-pointer hover:bg-emerald-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <input type="radio" name="pieVariant" value="chicken" checked class="text-emerald-700 focus:ring-emerald-700">
+                        <span class="text-sm font-semibold text-neutral-900">С курицей</span>
+                    </div>
+                    <span class="text-sm font-bold text-emerald-900">4 000 ₸</span>
+                </label>
+                <label class="flex items-center justify-between p-3 rounded-2xl border border-emerald-200 cursor-pointer hover:bg-emerald-50 transition-colors">
+                    <div class="flex items-center gap-3">
+                        <input type="radio" name="pieVariant" value="beef" class="text-emerald-700 focus:ring-emerald-700">
+                        <span class="text-sm font-semibold text-neutral-900">С говядиной</span>
+                    </div>
+                    <span class="text-sm font-bold text-emerald-900">4 500 ₸</span>
+                </label>
+            </div>
+
+            <button onclick="confirmPieSelection()" class="w-full bg-emerald-700 hover:bg-emerald-800 text-white font-bold py-3 rounded-xl shadow-lg transition-all">
+                Добавить в корзину
+            </button>
+        </div>
+    </div>
+
     <!-- Floating WhatsApp Button with Animation -->
     <a href="https://wa.me/77074328272" target="_blank" class="fixed bottom-6 right-6 z-40 bg-emerald-600 hover:bg-emerald-500 text-white w-14 h-14 rounded-full flex items-center justify-center text-3xl shadow-2xl transition-all transform hover:scale-110 animate-pulse-whatsapp">
         <i class="fa-brands fa-whatsapp"></i>
@@ -317,11 +348,11 @@
 
     <!-- JavaScript Data and Functions -->
     <script>
-        // Список товаров меню (новые позиции добавлены сверху)
+        // Список товаров меню
         const menuItems = [
-            { id: 67, name: "Пирог творожно-вишневый", category: "pies", price: 5500, weight: "1 шт.", desc: "Нежный творожный пирог со спелой сочной вишней.", image: "tvorog vishnya 5500tg.jpg" },
-            { id: 68, name: "Пирог «Красный бархат»", category: "pies", price: 5000, weight: "1 шт.", desc: "Фирменный пирог с легендарным бисквитом и кремом.", image: "kr barhat 5000tg.jpg" },
-            { id: 69, name: "Пирог «Сникерс»", category: "pies", price: 5500, weight: "1 шт.", desc: "Шоколадный пирог с карамелью и орехами.", image: "snikers 5500tg.jpg" },
+            { id: 67, name: "Пирог творожно-вишневый", category: "sweet_pies", price: 5500, weight: "1 шт.", desc: "Нежный творожный пирог со спелой сочной вишней.", image: "tvorog vishnya 5500tg.jpg" },
+            { id: 68, name: "Пирог «Красный бархат»", category: "sweet_pies", price: 5000, weight: "1 шт.", desc: "Фирменный пирог с легендарным бисквитом и кремом.", image: "kr barhat 5000tg.jpg" },
+            { id: 69, name: "Пирог «Сникерс»", category: "sweet_pies", price: 5500, weight: "1 шт.", desc: "Шоколадный пирог с карамелью и орехами.", image: "snikers 5500tg.jpg" },
             { id: 1, name: "Самса с говядиной", category: "baked", price: 350, weight: "1 шт.", desc: "Сочная начинка из отборной говядины с луком и специями в слоёном тесте.", image: "01_samsa_govyadina.png" },
             { id: 2, name: "Самса с курицей", category: "baked", price: 300, weight: "1 шт.", desc: "Нежное куриное филе с пряными специями в хрустящей корочке.", image: "02_samsa_kuritsa.png" },
             { id: 3, name: "Чебурек мини", category: "baked", price: 350, weight: "1 шт.", desc: "Аппетитные мини-чебуреки с сочным мясным фаршем.", image: "03_cheburek_mini-1.png" },
@@ -342,30 +373,30 @@
             { id: 18, name: "Трайфл «Красный бархат»", category: "cakes", price: 900, weight: "1 шт.", desc: "Изысканный десерт в стаканчике со сливочным кремом.", image: "крас бархат 1шт 900тг.jpg" },
             { id: 19, name: "Торт «Красный бархат»", category: "cakes", price: 5500, weight: "1 шт.", desc: "Фирменный праздничный торт с нежными бисквитными коржами.", image: "красн бархат 5500тг.jpg" },
             { id: 20, name: "Манты", category: "hot_dishes", price: 280, weight: "1 шт.", desc: "Сочные домашние манты из отборного мяса.", image: "манты 1 шт 280тг.jpg" },
-            { id: 21, name: "Микс пирогов", category: "pies", price: 5000, weight: "1 шт.", desc: "Ассорти из лучших видов домашних пирогов.", image: "Микс пироги 5000 тг.jpg" },
+            { id: 21, name: "Микс пирогов", category: "sweet_pies", price: 5000, weight: "1 шт.", desc: "Ассорти из лучших видов домашних пирогов.", image: "Микс пироги 5000 тг.jpg" },
             { id: 22, name: "Мини-баурсаки с балкаймаком", category: "baked", price: 2300, weight: "1 кг", desc: "Нежнейшие мини-баурсаки, подаваемые с традиционным балкаймаком.", image: "Мини баурсаки с Балкаймак 1 кг 2300.jpg" },
             { id: 23, name: "Салат «Морковь по-корейски»", category: "salads", price: 3500, weight: "1 кг", desc: "Пряная и хрустящая корейская морковка.", image: "морк по корей 1 кг 3000тг.jpg" },
             { id: 24, name: "Пирожное «Муравейник»", category: "cakes", price: 500, weight: "1 шт.", desc: "Любимое сладкое лакомство из рассыпчатого печенья с вареной сгущенкой.", image: "muraveynik.jpg" },
             { id: 25, name: "Котлеты куриные", category: "semifinished", price: 6000, weight: "1 кг", desc: "Домашние полуфабрикаты из нежного куриного фарша в панировке.", image: "Котлеты курица 6000 кг.jpg" },
             { id: 26, name: "Салат «Крабовый»", category: "salads", price: 4500, weight: "1 кг", desc: "Классический праздничный салат с крабовыми палочками и кукурузой.", image: "крабовый 1кг 4500тг.jpg" },
             { id: 27, name: "Пирожное «Красный бархат»", category: "cakes", price: 600, weight: "1 шт.", desc: "Порционное пирожное с характерным бисквитом.", image: "cake-red.jpg" },
-            { id: 28, name: "Пирог «Сметанник»", category: "pies", price: 4000, weight: "1 шт.", desc: "Нежный песочный пирог с ароматной сметанной заливкой.", image: "пирог сметанник 4000тг.jpg" },
-            { id: 29, name: "Пирог творожно-малиновый", category: "pies", price: 5500, weight: "1 шт.", desc: "Изысканное сочетание творожной начинки и яркой малины.", image: "Пирог творожно Малиновый 5500 тг.jpg" },
-            { id: 30, name: "Пирог творожный", category: "pies", price: 4000, weight: "1 шт.", desc: "Классический домашний творожный пирог.", image: "пирог творожный 4000тг.jpg" },
-            { id: 31, name: "Пирог «Боноффи пай»", category: "pies", price: 5000, weight: "1 шт.", desc: "Большой пирог с карамелью и бананами.", image: "пирог боноффи пай 5000тг.jpg" },
-            { id: 32, name: "Пирог «Восточный»", category: "pies", price: 4800, weight: "1 шт.", desc: "Пирог с восточными сухофруктами и орехами.", image: "пирог восточный 4800тг.jpg" },
-            { id: 33, name: "Пирог карамельный", category: "pies", price: 4500, weight: "1 шт.", desc: "Сладкий пирог с насыщенным карамельным вкусом.", image: "пирог карамель 4500тг.jpg" },
-            { id: 34, name: "Пирог маково-меренговый", category: "pies", price: 6000, weight: "1 шт.", desc: "Изысканный пирог с маковой начинкой и воздушной меренгой.", image: "Пирог Маково Меренговый 6000 тг.jpg" },
-            { id: 35, name: "Пирог с курагой", category: "pies", price: 4000, weight: "1 шт.", desc: "Сладкий и полезный пирог с начинкой из спелой кураги.", image: "пирог с курагой 4000тг.jpg" },
-            { id: 36, name: "Пирог с курицей и говядиной", category: "pies", price: 4500, weight: "1 кг", desc: "Сытный мясной пирог (с курицей — 4000 ₸, с говядиной — 4500 ₸).", image: "pirog_s_kuricey.jpg" },
-            { id: 37, name: "Пирог с черносливом", category: "pies", price: 4000, weight: "1 шт.", desc: "Ароматный пирог с добавлением пикантного чернослива.", image: "пирог с чернослив 4000тг.jpg" },
+            { id: 28, name: "Пирог «Сметанник»", category: "sweet_pies", price: 4000, weight: "1 шт.", desc: "Нежный песочный пирог с ароматной сметанной заливкой.", image: "пирог сметанник 4000тг.jpg" },
+            { id: 29, name: "Пирог творожно-малиновый", category: "sweet_pies", price: 5500, weight: "1 шт.", desc: "Изысканное сочетание творожной начинки и яркой малины.", image: "Пирог творожно Малиновый 5500 тг.jpg" },
+            { id: 30, name: "Пирог творожный", category: "sweet_pies", price: 4000, weight: "1 шт.", desc: "Классический домашний творожный пирог.", image: "пирог творожный 4000тг.jpg" },
+            { id: 31, name: "Пирог «Боноффи пай»", category: "sweet_pies", price: 5000, weight: "1 шт.", desc: "Большой пирог с карамелью и бананами.", image: "пирог боноффи пай 5000тг.jpg" },
+            { id: 32, name: "Пирог «Восточный»", category: "sweet_pies", price: 4800, weight: "1 шт.", desc: "Пирог с восточными сухофруктами и орехами.", image: "пирог восточный 4800тг.jpg" },
+            { id: 33, name: "Пирог карамельный", category: "sweet_pies", price: 4500, weight: "1 шт.", desc: "Сладкий пирог с насыщенным карамельным вкусом.", image: "пирог карамель 4500тг.jpg" },
+            { id: 34, name: "Пирог маково-меренговый", category: "sweet_pies", price: 6000, weight: "1 шт.", desc: "Изысканный пирог с маковой начинкой и воздушной меренгой.", image: "Пирог Маково Меренговый 6000 тг.jpg" },
+            { id: 35, name: "Пирог с курагой", category: "sweet_pies", price: 4000, weight: "1 шт.", desc: "Сладкий и полезный пирог с начинкой из спелой кураги.", image: "пирог с курагой 4000тг.jpg" },
+            { id: 36, name: "Пирог с мясом (курица / говядина)", category: "savory_pies", price: 4000, weight: "1 кг", desc: "Сытный мясной пирог на выбор: с курицей или с говядиной.", image: "pirog_s_kuricey.jpg", configurable: true },
+            { id: 37, name: "Пирог с черносливом", category: "sweet_pies", price: 4000, weight: "1 шт.", desc: "Ароматный пирог с добавлением пикантного чернослива.", image: "пирог с чернослив 4000тг.jpg" },
             { id: 38, name: "Сет №1", category: "sets", price: 23500, weight: "1 сет", desc: "Большой праздничный сет из лучших блюд и выпечки.", image: "Сет 1.jpg" },
             { id: 39, name: "Сет №2", category: "sets", price: 21300, weight: "1 сет", desc: "Сбалансированный ассорти-сет для всей семьи.", image: "Сет 2.jpg" },
             { id: 40, name: "Сет №3", category: "sets", price: 15100, weight: "1 сет", desc: "Уютный сет выпечки и десертов к чаю.", image: "Сет 3.jpg" },
             { id: 41, name: "Сет №4", category: "sets", price: 13200, weight: "1 сет", desc: "Компактный набор домашних угощений.", image: "Сет 4.jpg" },
             { id: 42, name: "Сет №5", category: "sets", price: 16600, weight: "1 сет", desc: "Вкусный подарочный набор для гостей.", image: "Сет 5.jpg" },
             { id: 43, name: "Сет №6", category: "sets", price: 10600, weight: "1 сет", desc: "Небольшой сытный сет по отличной цене.", image: "Сет 6.jpg" },
-            { id: 44, name: "Рулеты из баклажан", category: "semifinished", price: 400, weight: "1 шт.", desc: "Пикантные рулетики из баклажан с начинкой.", image: "Рулеты из баклажан 400 тг шт.jpg" },
+            { id: 44, name: "Рулеты из баклажан", category: "salads", price: 400, weight: "1 шт.", desc: "Пикантные рулетики из баклажан с начинкой.", image: "Рулеты из баклажан 400 тг шт.jpg" },
             { id: 45, name: "Салат «Генеральский»", category: "salads", price: 5500, weight: "1 кг", desc: "Изысканный многослойный салат с грибами и мясом.", image: "салат генеральский 1кг 5500тг.jpg" },
             { id: 46, name: "Свекольный салат", category: "salads", price: 3500, weight: "1 кг", desc: "Полезный салат из отборной свеклы с грецкими орехами.", image: "свекольный 3500тг 1кг.jpg" },
             { id: 47, name: "Салат «Сельдь под шубой»", category: "salads", price: 5500, weight: "1 кг", desc: "Классический праздничный салат с сельдью и овощами.", image: "сельд под шуб 5500тг 1 кг.jpg" },
@@ -375,15 +406,15 @@
             { id: 51, name: "Тарталетка ягодная", category: "cakes", price: 600, weight: "1 шт.", desc: "Песочная тарталетка с кремом и свежими фруктами.", image: "Тарталетка ягодная 600 тг.jpg" },
             { id: 52, name: "Салат «Тбилиси»", category: "salads", price: 6000, weight: "1 кг", desc: "Пряный грузинский салат с фасолью, мясом и грецким орехом.", image: "тбилиси 6000тг 1 кг.jpg" },
             { id: 53, name: "Трайфл фисташковый", category: "cakes", price: 1200, weight: "1 шт.", desc: "Нежный десерт с фисташковым бисквитом и ягодами.", image: "фисташковый 1200тг 1 шт.jpg" },
-            { id: 54, name: "Фисташковый сметанник", category: "pies", price: 4800, weight: "1 шт.", desc: "Оригинальный пирог с фисташковым вкусом.", image: "Фисташковый Сметанник 4800 тг.jpg" },
+            { id: 54, name: "Фисташковый сметанник", category: "sweet_pies", price: 4800, weight: "1 шт.", desc: "Оригинальный пирог с фисташковым вкусом.", image: "Фисташковый Сметанник 4800 тг.jpg" },
             { id: 55, name: "Фунчоза", category: "salads", price: 4000, weight: "1 кг", desc: "Азиатская стеклянная лапша с овощами и заправкой.", image: "фунчеза 1кг 3500тг.jpg" },
             { id: 56, name: "Салат «Цезарь»", category: "salads", price: 5500, weight: "1 кг", desc: "Популярный салат с куриным филе, сухариками, сыром и соусом.", image: "цезарь 5500 тг 1 кг.jpg" },
             { id: 57, name: "Сет «Семейный»", category: "sets", price: 15600, weight: "1 сет", desc: "Специальный семейный сет для уютного вечера.", image: "semeyniy.jpg" },
-            { id: 58, name: "Шоколадный сметанник", category: "pies", price: 4800, weight: "1 шт.", desc: "Насыщенный шоколадный пирог со сметанным кремом.", image: "Сметанник шоколадный 4800 тг.jpg" },
-            { id: 59, name: "Шарлотка", category: "pies", price: 4000, weight: "1 шт.", desc: "Классический воздушный пирог со свежими яблоками.", image: "шарлотка 4000тг.jpg" },
-            { id: 60, name: "Яблочный с меренгой", category: "pies", price: 5000, weight: "1 шт.", desc: "Нежный яблочный пирог под шапкой из опаленной меренги.", image: "яблочный с меренгой 5000тг 1шт.jpg" },
+            { id: 58, name: "Шоколадный сметанник", category: "sweet_pies", price: 4800, weight: "1 шт.", desc: "Насыщенный шоколадный пирог со сметанным кремом.", image: "Сметанник шоколадный 4800 тг.jpg" },
+            { id: 59, name: "Шарлотка", category: "sweet_pies", price: 4000, weight: "1 шт.", desc: "Классический воздушный пирог со свежими яблоками.", image: "шарлотка 4000тг.jpg" },
+            { id: 60, name: "Яблочный с меренгой", category: "sweet_pies", price: 5000, weight: "1 шт.", desc: "Нежный яблочный пирог под шапкой из опаленной меренги.", image: "яблочный с меренгой 5000тг 1шт.jpg" },
             { id: 61, name: "Киш с семгой и брокколи", category: "hot_dishes", price: 6000, weight: "1 шт.", desc: "Изысканный французский киш с благородной рыбой и овощами.", image: "киш с семга и брокалли 6000тг 1 шт.jpg" },
-            { id: 62, name: "Компот домашний", category: "drinks", price: 800, weight: "1 л", desc: "Освежающий натуральный компот собственного приготовления.", image: "kompot.jpg" },
+            { id: 62, name: "Компот 1 л", category: "drinks", price: 800, weight: "1 л", desc: "Освежающий натуральный компот собственного приготовления.", image: "kompot.jpg" },
             { id: 63, name: "Салат «Нежный»", category: "salads", price: 4500, weight: "1 кг", desc: "Легкий и мягкий салат из отборных ингредиентов.", image: "нежный 4500тг 1 кг.jpg" },
             { id: 64, name: "Салат «Оливье»", category: "salads", price: 4500, weight: "1 кг", desc: "Любимый традиционный новогодний и праздничный салат.", image: "olivie.jpg" },
             { id: 65, name: "Пирожное медовое", category: "cakes", price: 700, weight: "1 шт.", desc: "Порционное медовое пирожное с кремом и ягодами.", image: "пирожное медовое 1шт 700тг.jpg" },
@@ -428,13 +459,46 @@
                     </div>
                     <div class="p-5 pt-0 flex items-center justify-between border-t border-neutral-100 mt-2">
                         <span class="text-lg font-extrabold text-emerald-900">${item.price.toLocaleString()} ₸</span>
-                        <button onclick="addToCart(${item.id})" class="bg-emerald-50 hover:bg-emerald-700 text-emerald-800 hover:text-white px-4 py-2.5 rounded-xl font-semibold text-xs transition-all flex items-center gap-1.5 shadow-sm">
+                        <button onclick="handleItemClick(${item.id})" class="bg-emerald-50 hover:bg-emerald-700 text-emerald-800 hover:text-white px-4 py-2.5 rounded-xl font-semibold text-xs transition-all flex items-center gap-1.5 shadow-sm">
                             <i class="fa-solid fa-plus"></i> В корзину
                         </button>
                     </div>
                 `;
                 grid.appendChild(card);
             });
+        }
+
+        // Обработка клика по кнопке "В корзину"
+        function handleItemClick(id) {
+            const item = menuItems.find(i => i.id === id);
+            if (item.configurable) {
+                openPieModal();
+            } else {
+                addToCart(id, item.name, item.price, item.weight);
+            }
+        }
+
+        // Модальное окно выбора начинки пирога
+        function openPieModal() {
+            document.getElementById('pieModal').classList.remove('hidden');
+        }
+
+        function closePieModal() {
+            document.getElementById('pieModal').classList.add('hidden');
+        }
+
+        function confirmPieSelection() {
+            const variant = document.querySelector('input[name="pieVariant"]:checked').value;
+            let name, price;
+            if (variant === 'chicken') {
+                name = "Пирог с мясом (с курицей)";
+                price = 4000;
+            } else {
+                name = "Пирог с мясом (с говядиной)";
+                price = 4500;
+            }
+            closePieModal();
+            addToCart(36, name, price, "1 кг");
         }
 
         // Фильтрация по категории
@@ -463,24 +527,24 @@
             renderCart();
         }
 
-        function addToCart(id) {
-            const item = menuItems.find(i => i.id === id);
-            const existing = cart.find(i => i.id === id);
+        function addToCart(id, name, price, weight) {
+            const cartItemId = `${id}-${name}`;
+            const existing = cart.find(i => i.cartItemId === cartItemId);
             if (existing) {
                 existing.qty++;
             } else {
-                cart.push({ ...item, qty: 1 });
+                cart.push({ cartItemId, id, name, price, weight, qty: 1 });
             }
             updateCartCount();
-            showToast(`Товар "${item.name}" добавлен в корзину!`);
+            showToast(`Товар "${name}" добавлен в корзину!`);
         }
 
-        function changeQty(id, delta) {
-            const item = cart.find(i => i.id === id);
+        function changeQty(cartItemId, delta) {
+            const item = cart.find(i => i.cartItemId === cartItemId);
             if (item) {
                 item.qty += delta;
                 if (item.qty <= 0) {
-                    cart = cart.filter(i => i.id !== id);
+                    cart = cart.filter(i => i.cartItemId !== cartItemId);
                 }
             }
             renderCart();
@@ -513,9 +577,9 @@
                     </div>
                     <div class="flex items-center gap-3">
                         <div class="flex items-center border border-neutral-200 rounded-lg overflow-hidden">
-                            <button onclick="changeQty(${item.id}, -1)" class="px-2.5 py-1 bg-neutral-50 hover:bg-neutral-200 text-neutral-700 text-xs font-bold">-</button>
+                            <button onclick="changeQty('${item.cartItemId}', -1)" class="px-2.5 py-1 bg-neutral-50 hover:bg-neutral-200 text-neutral-700 text-xs font-bold">-</button>
                             <span class="px-3 text-xs font-semibold">${item.qty}</span>
-                            <button onclick="changeQty(${item.id}, 1)" class="px-2.5 py-1 bg-neutral-50 hover:bg-neutral-200 text-neutral-700 text-xs font-bold">+</button>
+                            <button onclick="changeQty('${item.cartItemId}', 1)" class="px-2.5 py-1 bg-neutral-50 hover:bg-neutral-200 text-neutral-700 text-xs font-bold">+</button>
                         </div>
                         <span class="font-bold text-sm text-emerald-900 w-20 text-right">${(item.price * item.qty).toLocaleString()} ₸</span>
                     </div>
